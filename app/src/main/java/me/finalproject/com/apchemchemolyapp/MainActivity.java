@@ -1,5 +1,7 @@
 package me.finalproject.com.apchemchemolyapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -27,19 +29,19 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         //load pictures for navigation bar
-        Bitmap stoich;
-        Bitmap quantum;
-        Bitmap thermo;
-        Bitmap bonding;
-        Bitmap gases;
-        Bitmap phases;
-        Bitmap kinetics;
-        Bitmap solutions;
-        Bitmap equilibrium;
-        Bitmap Acid;
-        Bitmap Electrochem;
-        Bitmap spectroscopy;
-        Bitmap complexes;
+//        Bitmap quantum;
+//        Bitmap stoich;
+//        Bitmap thermo;
+//        Bitmap bonding;
+//        Bitmap gases;
+//        Bitmap phases;
+//        Bitmap kinetics;
+//        Bitmap solutions;
+//        Bitmap equilibrium;
+//        Bitmap acid;
+//        Bitmap electrochem;
+//        Bitmap spectroscopy;
+//        Bitmap complexes;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -108,61 +110,86 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item)
     {
         // Handle navigation view item clicks here.
+        FragmentManager fragmentManager = getFragmentManager();
         int id = item.getItemId();
-
-        if (id == R.id.nav_QuantumMechanics)
+        if(id == R.id.nav_Acids)
         {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new acid_fragment())
+                    .commit();
         }
-        else if (id == R.id.nav_Stoichiometry)
+        else if(id == R.id.nav_bonding)
         {
-
-        }
-        else if (id == R.id.nav_thermodynamics)
-        {
-
-        }
-        else if (id == R.id.nav_bonding)
-        {
-
-        }
-        else if(id == R.id.nav_IdealGases)
-        {
-
-        }
-        else if(id == R.id.nav_PhaseChanges)
-        {
-
-        }
-        else if(id == R.id.nav_Kinetics)
-        {
-
-        }
-        else if(id == R.id.nav_Solutions)
-        {
-
-        }
-        else if(id == R.id.nav_Equilibrium)
-        {
-
-        }
-        else if(id == R.id.nav_Acids)
-        {
-
-        }
-        else if(id == R.id.nav_Electrochem)
-        {
-
-        }
-        else if(id == R.id.nav_Spectroscopy)
-        {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new bonding_fragment())
+                    .commit();
         }
         else if(id == R.id.nav_Coordinate)
         {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new complexes_fragment())
+                    .commit();
         }
-
+        else if(id == R.id.nav_Electrochem)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new electrochem_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_Equilibrium)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new equilibrium_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_IdealGases)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new gases_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_Kinetics)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new kinetics_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_PhaseChanges)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new phases_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_QuantumMechanics)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new quantum_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_Solutions)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new solutions_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_Spectroscopy)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new spectroscopy_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_Stoichiometry)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new stoich_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_thermodynamics)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new thermo_fragment())
+                    .commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
