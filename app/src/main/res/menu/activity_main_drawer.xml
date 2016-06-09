@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_QuantumMechanics"
+            android:icon="@drawable/_quantum"
+            android:title="Quantum Mechanics" />
+        <item
+            android:id="@+id/nav_Stoichiometry"
+            android:icon="@drawable/_stoichiometry"
+            android:title="Stoichiometry" />
+        <item
+            android:id="@+id/nav_thermodynamics"
+            android:icon="@drawable/_thermodynamics"
+            android:title="Thermodynamics" />
+        <item
+            android:id="@+id/nav_bonding"
+            android:icon="@drawable/_bonding"
+            android:title="Bonding" />
+        <item
+            android:id="@+id/nav_IdealGases"
+            android:icon="@drawable/gases"
+            android:title="Ideal Gases" />
+        <item
+            android:id="@+id/nav_PhaseChanges"
+            android:icon="@drawable/_phases"
+            android:title="Phase Changes" />
+        <item
+            android:id="@+id/nav_Kinetics"
+            android:icon="@drawable/_kin"
+            android:title="Kinetics" />
+        <item
+            android:id="@+id/nav_Solutions"
+            android:icon="@drawable/_solutions"
+            android:title="Solutions" />
+        <item
+            android:id="@+id/nav_Equilibrium"
+            android:icon="@drawable/_equilibrium"
+            android:title="Equilibrium" />
+        <item
+            android:id="@+id/nav_Acids"
+            android:icon="@drawable/_acid"
+            android:title="Acids and Bases" />
+        <item
+            android:id="@+id/nav_Electrochem"
+            android:icon="@drawable/_electrochem"
+            android:title="Electrochemistry" />
+        <item
+            android:id="@+id/nav_Spectroscopy"
+            android:icon="@drawable/_spectroscopy"
+            android:title="Intro to Spectroscopy" />
+        <item
+            android:id="@+id/nav_Coordinate"
+            android:icon="@drawable/_coordinate_complex"
+            android:title="Coordinate Compounds" />
+
+    </group>
+
+</menu>
