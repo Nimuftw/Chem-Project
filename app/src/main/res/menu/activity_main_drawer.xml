@@ -3,6 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_ContentReview"
+            android:icon="@drawable/_coordinate_complex"
+            android:title="Content Review" />
+        <item
             android:id="@+id/nav_QuantumMechanics"
             android:icon="@drawable/_quantum"
             android:title="Quantum Mechanics" />
@@ -54,7 +58,6 @@
             android:id="@+id/nav_Coordinate"
             android:icon="@drawable/_coordinate_complex"
             android:title="Coordinate Compounds" />
-
     </group>
 
 </menu>

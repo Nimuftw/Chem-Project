@@ -190,6 +190,12 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new thermo_fragment())
                     .commit();
         }
+        else if(id == R.id.nav_ContentReview)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new contentreview_fragment())
+                    .commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
