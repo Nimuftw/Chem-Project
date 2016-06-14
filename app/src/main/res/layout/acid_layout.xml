@@ -8,5 +8,6 @@
         android:text="Acids and Bases"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/background_material_light" />
 </RelativeLayout>

@@ -9,5 +9,6 @@
         android:text="Solutions"
         android:id="@+id/textView11"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/background_material_light"/>
 </RelativeLayout>

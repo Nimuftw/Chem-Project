@@ -9,5 +9,6 @@
         android:text="Ideal Gases"
         android:id="@+id/textView7"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/background_material_light"/>
 </RelativeLayout>

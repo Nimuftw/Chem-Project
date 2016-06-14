@@ -6,9 +6,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Phase Changes"
-        android:id="@+id/textView9"
+        android:text="Periodic Table"
+        android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/background_material_light"/>
+        android:clickable="false"
+        android:textColor="@color/abc_background_cache_hint_selector_material_light" />
 </RelativeLayout>
