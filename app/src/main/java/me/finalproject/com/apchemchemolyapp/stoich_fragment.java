@@ -12,12 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.io.Serializable;
 
 
 /**
  * Created by Shishir on 6/9/2016.
  */
-public class stoich_fragment extends Fragment implements View.OnClickListener
+public class stoich_fragment extends Fragment implements View.OnClickListener, Serializable
 {
     View rootview;
     int i = 0;
@@ -57,32 +58,52 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             if(let.compareTo(let.toLowerCase()) > 0)
             {
                 element += let;
-                if(re.substring(i+1, i+2).compareTo(re.substring(i+1, i+2).toLowerCase()) != 0)
+                if(i == re.length()-1 || i == re.length())
                 {
-                    if(!re.substring(i+1,i+2).equals("2")||re.substring(i+1,i+2).equals("3")||re.substring(i+1,i+2).equals("4")||re.substring(i+1,i+2).equals("5")||re.substring(i+1,i+2).equals("6")||re.substring(i+1,i+2).equals("7")||re.substring(i+1,i+2).equals("8")||re.substring(i+1,i+2).equals("9"))
+                    elements.add(element);
+                    if(re.substring(re.length()-1).equals("2")||re.substring(re.length()-1).equals("3")||re.substring(re.length()-1).equals("4")||re.substring(re.length()-1).equals("5")||re.substring(re.length()-1).equals("6")||re.substring(re.length()-1).equals("7")||re.substring(re.length()-1).equals("8")||re.substring(re.length()-1).equals("9"))
+                    {
+                        arr.add(Integer.parseInt(re.substring(re.length()-1)));
+                    }
+                    else
+                    {
+                        arr.add(1);
+                        elements.add(re.substring(re.length()-1));
+                        arr.add(1);
+                    }
+                    getElements = false;
+                }
+                else if(re.substring(i+1, i+2).compareTo(re.substring(i+1, i+2).toLowerCase()) != 0)
+                {
+                    if(!re.substring(i+1,i+2).equals("2")||!re.substring(i+1,i+2).equals("3")||!re.substring(i+1,i+2).equals("4")||!re.substring(i+1,i+2).equals("5")||!re.substring(i+1,i+2).equals("6")||!re.substring(i+1,i+2).equals("7")||!re.substring(i+1,i+2).equals("8")||!re.substring(i+1,i+2).equals("9"))
                     {
                         temp = 1;
                         arr.add(temp);
                     }
                 }
-                i++;
-                if(i == re.length())
-                {
-                    getElements = false;
-                }
             }
             else if(let.compareTo(let.toLowerCase()) == 0)
             {
                 element += let;
-                if(!re.substring(i+1,i+2).equals("2")||re.substring(i+1,i+2).equals("3")||re.substring(i+1,i+2).equals("4")||re.substring(i+1,i+2).equals("5")||re.substring(i+1,i+2).equals("6")||re.substring(i+1,i+2).equals("7")||re.substring(i+1,i+2).equals("8")||re.substring(i+1,i+2).equals("9"))
+                if(i == re.length()-1 || i == re.length())
+                {
+                    elements.add(element);
+                    if(re.substring(re.length()-1).equals("2")||re.substring(re.length()-1).equals("3")||re.substring(re.length()-1).equals("4")||re.substring(re.length()-1).equals("5")||re.substring(re.length()-1).equals("6")||re.substring(re.length()-1).equals("7")||re.substring(re.length()-1).equals("8")||re.substring(re.length()-1).equals("9"))
+                    {
+                        arr.add(Integer.parseInt(re.substring(re.length()-1)));
+                    }
+                    else
+                    {
+                        arr.add(1);
+                        elements.add(re.substring(re.length()-1));
+                        arr.add(1);
+                    }
+                    getElements = false;
+                }
+                else if(!re.substring(i+1,i+2).equals("2")||re.substring(i+1,i+2).equals("3")||re.substring(i+1,i+2).equals("4")||re.substring(i+1,i+2).equals("5")||re.substring(i+1,i+2).equals("6")||re.substring(i+1,i+2).equals("7")||re.substring(i+1,i+2).equals("8")||re.substring(i+1,i+2).equals("9"))
                 {
                     temp = 1;
                     arr.add(temp);
-                }
-                i++;
-                if(i == re.length())
-                {
-                    getElements = false;
                 }
             }
             else if (let.equals("2")||let.equals("3")||let.equals("4")||let.equals("5")||let.equals("6")||let.equals("7")||let.equals("8")||let.equals("9"))
@@ -91,10 +112,11 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                 arr.add(temp);
                 elements.add(element);
                 element = "";
-                if(i == re.length())
-                {
-                    getElements = false;
-                }
+            }
+            i++;
+            if(i == re.length()+1)
+            {
+                getElements = false;
             }
         }
         // displays the elements isolated on the reactant side
