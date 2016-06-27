@@ -21,22 +21,21 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
 {
     View rootview;
     int i = 0;
-    int j = 0;
     ArrayList<Integer> arr = new ArrayList<>();
     ArrayList<String> elements = new ArrayList<>();
     boolean getElements = true;
-    String s1 = "";
+    String s1;
     String element = "";
     EditText reactants;
     TextView beq;
     Button go;
+    int temp;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         rootview = inflater.inflate(R.layout.stoich_layout, container, false);
         reactants = (EditText) rootview.findViewById(R.id.reactants);
-
         go = (Button) rootview.findViewById(R.id.button);
         go.setOnClickListener(this);
         return rootview;
@@ -52,13 +51,20 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
         String reactant = reactants.getText().toString();
         //saying that reactants is null even after it went through the onCreateView method
         String re = reactant.replaceAll("\\s+","");
-        re += " ";
         while(getElements)
         {
             String let = re.substring(i, i+1);
             if(let.compareTo(let.toLowerCase()) > 0)
             {
                 element += let;
+                if(re.substring(i+1, i+2).compareTo(re.substring(i+1, i+2).toLowerCase()) != 0)
+                {
+                    if(!re.substring(i+1,i+2).equals("2")||re.substring(i+1,i+2).equals("3")||re.substring(i+1,i+2).equals("4")||re.substring(i+1,i+2).equals("5")||re.substring(i+1,i+2).equals("6")||re.substring(i+1,i+2).equals("7")||re.substring(i+1,i+2).equals("8")||re.substring(i+1,i+2).equals("9"))
+                    {
+                        temp = 1;
+                        arr.add(temp);
+                    }
+                }
                 i++;
                 if(i == re.length())
                 {
@@ -68,16 +74,20 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             else if(let.compareTo(let.toLowerCase()) == 0)
             {
                 element += let;
+                if(!re.substring(i+1,i+2).equals("2")||re.substring(i+1,i+2).equals("3")||re.substring(i+1,i+2).equals("4")||re.substring(i+1,i+2).equals("5")||re.substring(i+1,i+2).equals("6")||re.substring(i+1,i+2).equals("7")||re.substring(i+1,i+2).equals("8")||re.substring(i+1,i+2).equals("9"))
+                {
+                    temp = 1;
+                    arr.add(temp);
+                }
                 i++;
                 if(i == re.length())
                 {
                     getElements = false;
                 }
-                j++;
             }
-            else if (let.equals("0")||let.equals("1")||let.equals("2")||let.equals("3")||let.equals("4")||let.equals("5")||let.equals("6")||let.equals("7")||let.equals("8")||let.equals("9"))
+            else if (let.equals("2")||let.equals("3")||let.equals("4")||let.equals("5")||let.equals("6")||let.equals("7")||let.equals("8")||let.equals("9"))
             {
-                int temp = Integer.parseInt(let);
+                temp = Integer.parseInt(let);
                 arr.add(temp);
                 elements.add(element);
                 element = "";
