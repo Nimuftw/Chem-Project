@@ -72,11 +72,14 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                     arr.add(1);
                     getElements = false;
                 }
-                temp = Integer.parseInt(let);
-                arr.add(temp);
-                reactants_elements.add(element);
-                element = "";
-                temp = 0;
+                else
+                {
+                    temp = Integer.parseInt(let);
+                    arr.add(temp);
+                    reactants_elements.add(element);
+                    element = "";
+                    temp = 0;
+                }
             }
             else if((let.toLowerCase()).compareTo(let) > 0)
             {
