@@ -1,7 +1,6 @@
 package me.finalproject.com.apchemchemolyapp;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -22,18 +21,21 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     int i = 0;
     ArrayList<Integer> arr = new ArrayList<>();
     ArrayList<String> reactants_elements = new ArrayList<>();
+    ArrayList<String> products_elements = new ArrayList<>();
     ArrayList<String> rcompounds = new ArrayList<>();
     ArrayList<String> pcompounds = new ArrayList<>();
     boolean getElements = true;
     String relement;
     String pelement;
     String compound;
-    boolean getCompounds = true;
+    boolean getrc = true;
+    boolean getpc = true;
     String element = "";
     EditText reactants;
     EditText products;
     TextView beq;
     Button go;
+    String balancedeq;
     int temp;
     @Nullable
     @Override
@@ -48,9 +50,11 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     }
     public void onClick(View v)
     {
-        getReactants();
+        getpCompounds();
         beq = (TextView) rootview.findViewById(R.id.balanced_equation);
-        beq.setText(relement);
+        //have to create many methods to achieve
+//        beq.setText(balancedeq);
+        beq.setText(balancedeq);
     }
     //Can I use this to isolate individual elements from each reactant/product?
     //Will be more simple alternative to what we currently have
@@ -154,58 +158,35 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             relement += (reactants_elements.get(a) + " : " + arr.get(a) + "\n");
         }
     }
-
-    public void getCompounds()
-    {
-        String reactant = reactants.getText().toString();
-        String re = reactant.replaceAll("\\s+","");
-        String let = re.substring(i, i+1);
-        while(getCompounds)
-        {
-            if(!let.equals("+"))
-            {
-                compound += let;
-                i++;
-            }
-            else
-            {
-                rcompounds.add(compound);
-                compound = "";
-                i++;
-            }
-        }
-    }
-
-
     public void getProducts()
     {
         String p = products.getText().toString();
         //can take input right here
-        String re = p.replaceAll("\\s+","");
+        String prod = p.replaceAll("\\s+","");
         while(getElements)
         {
-            String let = re.substring(i, i+1);
+            String let = prod.substring(i, i+1);
             if(let.compareTo(let.toLowerCase()) > 0)
             {
                 element += let;
-                if(i == re.length()-1 || i == re.length())
+                if(i == prod.length()-1 || i == prod.length())
                 {
-                    reactants_elements.add(element);
-                    if(re.substring(re.length()-1).equals("2")||re.substring(re.length()-1).equals("3")||re.substring(re.length()-1).equals("4")||re.substring(re.length()-1).equals("5")||re.substring(re.length()-1).equals("6")||re.substring(re.length()-1).equals("7")||re.substring(re.length()-1).equals("8")||re.substring(re.length()-1).equals("9"))
+                    products_elements.add(element);
+                    if(prod.substring(prod.length()-1).equals("2")||prod.substring(prod.length()-1).equals("3")||prod.substring(prod.length()-1).equals("4")||prod.substring(prod.length()-1).equals("5")||prod.substring(prod.length()-1).equals("6")||prod.substring(prod.length()-1).equals("7")||prod.substring(prod.length()-1).equals("8")||prod.substring(prod.length()-1).equals("9"))
                     {
-                        arr.add(Integer.parseInt(re.substring(re.length()-1)));
+                        arr.add(Integer.parseInt(prod.substring(prod.length()-1)));
                     }
                     else
                     {
                         arr.add(1);
-                        reactants_elements.add(re.substring(re.length()-1));
+                        products_elements.add(prod.substring(prod.length()-1));
                         arr.add(1);
                     }
                     getElements = false;
                 }
-                else if(re.substring(i+1, i+2).compareTo(re.substring(i+1, i+2).toLowerCase()) != 0)
+                else if(prod.substring(i+1, i+2).compareTo(prod.substring(i+1, i+2).toLowerCase()) != 0)
                 {
-                    if(!re.substring(i+1,i+2).equals("2")||!re.substring(i+1,i+2).equals("3")||!re.substring(i+1,i+2).equals("4")||!re.substring(i+1,i+2).equals("5")||!re.substring(i+1,i+2).equals("6")||!re.substring(i+1,i+2).equals("7")||!re.substring(i+1,i+2).equals("8")||!re.substring(i+1,i+2).equals("9"))
+                    if(!prod.substring(i+1,i+2).equals("2")||!prod.substring(i+1,i+2).equals("3")||!prod.substring(i+1,i+2).equals("4")||!prod.substring(i+1,i+2).equals("5")||!prod.substring(i+1,i+2).equals("6")||!prod.substring(i+1,i+2).equals("7")||!prod.substring(i+1,i+2).equals("8")||!prod.substring(i+1,i+2).equals("9"))
                     {
                         temp = 1;
                         arr.add(temp);
@@ -215,22 +196,22 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             else if(let.compareTo(let.toLowerCase()) == 0)
             {
                 element += let;
-                if(i == re.length()-1 || i == re.length())
+                if(i == prod.length()-1 || i == prod.length())
                 {
-                    reactants_elements.add(element);
-                    if(re.substring(re.length()-1).equals("2")||re.substring(re.length()-1).equals("3")||re.substring(re.length()-1).equals("4")||re.substring(re.length()-1).equals("5")||re.substring(re.length()-1).equals("6")||re.substring(re.length()-1).equals("7")||re.substring(re.length()-1).equals("8")||re.substring(re.length()-1).equals("9"))
+                    products_elements.add(element);
+                    if(prod.substring(prod.length()-1).equals("2")||prod.substring(prod.length()-1).equals("3")||prod.substring(prod.length()-1).equals("4")||prod.substring(prod.length()-1).equals("5")||prod.substring(prod.length()-1).equals("6")||prod.substring(prod.length()-1).equals("7")||prod.substring(prod.length()-1).equals("8")||prod.substring(prod.length()-1).equals("9"))
                     {
-                        arr.add(Integer.parseInt(re.substring(re.length()-1)));
+                        arr.add(Integer.parseInt(prod.substring(prod.length()-1)));
                     }
                     else
                     {
                         arr.add(1);
-                        reactants_elements.add(re.substring(re.length()-1));
+                        products_elements.add(prod.substring(prod.length()-1));
                         arr.add(1);
                     }
                     getElements = false;
                 }
-                else if(!re.substring(i+1,i+2).equals("2")||re.substring(i+1,i+2).equals("3")||re.substring(i+1,i+2).equals("4")||re.substring(i+1,i+2).equals("5")||re.substring(i+1,i+2).equals("6")||re.substring(i+1,i+2).equals("7")||re.substring(i+1,i+2).equals("8")||re.substring(i+1,i+2).equals("9"))
+                else if(!prod.substring(i+1,i+2).equals("2")||prod.substring(i+1,i+2).equals("3")||prod.substring(i+1,i+2).equals("4")||prod.substring(i+1,i+2).equals("5")||prod.substring(i+1,i+2).equals("6")||prod.substring(i+1,i+2).equals("7")||prod.substring(i+1,i+2).equals("8")||prod.substring(i+1,i+2).equals("9"))
                 {
                     temp = 1;
                     arr.add(temp);
@@ -240,20 +221,83 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             {
                 temp = Integer.parseInt(let);
                 arr.add(temp);
-                reactants_elements.add(element);
+                products_elements.add(element);
                 element = "";
             }
             i++;
-            if(i == re.length()+1)
+            if(i == prod.length()+1)
             {
                 getElements = false;
             }
         }
         // displays the elements isolated on the reactant side
         // to test to make sure my logic works
-        for(int a = 0; a<reactants_elements.size(); a++)
+        for(int a = 0; a<products_elements.size(); a++)
         {
-            p += (reactants_elements.get(a) + " : " + arr.get(a) + "\n");
+            p += (products_elements.get(a) + " : " + arr.get(a) + "\n");
+        }
+    }
+    public void getrCompounds()
+    {
+        String reactant = reactants.getText().toString();
+        String re = reactant.replaceAll("\\s+","");
+        while(getrc)
+        {
+            String let = re.substring(i, i+1);
+            if(!let.equals("+"))
+            {
+                compound += let;
+            }
+            else
+            {
+                rcompounds.add(compound);
+                compound = "";
+            }
+            i++;
+            if(i == re.length())
+            {
+                pcompounds.add(compound);
+                getpc = false;
+            }
+        }
+        compound = "";
+    }
+    public void getpCompounds()
+    {
+        //may have to change compound to pCompound
+        String p = products.getText().toString();
+        String prod = p.replaceAll("\\s+","");
+        i = 0;
+        while(getpc)
+        {
+            String let = prod.substring(i, i+1);
+            if(!let.equals("+"))
+            {
+                compound += let;
+            }
+            else
+            {
+                pcompounds.add(compound);
+                compound = "";
+            }
+            i++;
+            if(i == prod.length())
+            {
+                pcompounds.add(compound);
+                getpc = false;
+            }
+        }
+        for(int a = 0; a < pcompounds.size(); a++)
+        {
+            String s = pcompounds.get(a);
+            if (s.substring(0,1).equals("2")||s.substring(0,1).equals("3")||s.substring(0,1).equals("4")||s.substring(0,1).equals("5")||s.substring(0,1).equals("6")||s.substring(0,1).equals("7")||s.substring(0,1).equals("8")||s.substring(0,1).equals("9"))
+            {
+                String d = s.substring(1);
+                s = d;
+                pcompounds.remove(a);
+                pcompounds.add(a, s);
+                s = "";
+            }
         }
     }
     public void rDuplicates()
@@ -269,10 +313,22 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                     {
                         int dup1 = arr.get(a) + arr.get(b);
                         reactants_elements.remove(b);
+                        arr.remove(a);
                         arr.add(a, dup1);
-                        arr.remove(a+1);
+
                     }
                 }
+            }
+        }
+    }
+
+    public void removeNull()
+    {
+        for(int a = 0; a<balancedeq.length() - 4; a++)
+        {
+            if(balancedeq.substring(a, a+4).equals("null"))
+            {
+                balancedeq = balancedeq.substring(a+4);
             }
         }
     }
