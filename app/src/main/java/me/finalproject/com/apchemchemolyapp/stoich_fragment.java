@@ -417,7 +417,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             }
         }
     }
-
+    //sometimes the outputs have "null" in them
     public void removeNull()
     {
         for(int a = 0; a<balancedeq.length() - 4; a++)

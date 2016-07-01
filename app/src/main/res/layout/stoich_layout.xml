@@ -6,22 +6,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reactants"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="95dp"
         android:textSize="20sp"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_above="@+id/balanced_equation"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignStart="@+id/title"
+        android:layout_marginBottom="73dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/products"
-        android:layout_alignBottom="@+id/reactants"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:textSize="20sp"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_alignTop="@+id/reactants"
+        android:layout_alignRight="@+id/title"
+        android:layout_alignEnd="@+id/title" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,8 +47,37 @@
         android:layout_height="wrap_content"
         android:text="@string/button"
         android:id="@+id/button"
+        android:layout_marginBottom="57dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="45dp" />
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Reactants"
+        android:id="@+id/ReacLabel"
+        android:layout_alignTop="@+id/ProdLabel"
+        android:layout_alignLeft="@+id/reactants"
+        android:layout_alignStart="@+id/reactants" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Products"
+        android:id="@+id/ProdLabel"
+        android:layout_below="@+id/products"
+        android:layout_alignRight="@+id/products"
+        android:layout_alignEnd="@+id/products" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_above="@+id/ProdLabel"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button" />
+
 
 </RelativeLayout>
