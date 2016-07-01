@@ -19,7 +19,8 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
 {
     View rootview;
     int i = 0;
-    ArrayList<Integer> arr = new ArrayList<>();
+    ArrayList<Integer> reacarr = new ArrayList<>();
+    ArrayList<Integer> prodarr = new ArrayList<>();
     ArrayList<String> reactants_elements = new ArrayList<>();
     ArrayList<String> products_elements = new ArrayList<>();
     ArrayList<String> rcompounds = new ArrayList<>();
@@ -67,7 +68,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             if(re.length() == 1)
             {
                 reactants_elements.add(re);
-                arr.add(1);
+                reacarr.add(1);
                 getElements = false;
             }
             String let = re.substring(i, i+1);
@@ -76,15 +77,15 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                 if(i == re.length()-2)
                 {
                     reactants_elements.add(element);
-                    arr.add(Integer.parseInt(let));
+                    reacarr.add(Integer.parseInt(let));
                     reactants_elements.add(re.substring(re.length()-1));
-                    arr.add(1);
+                    reacarr.add(1);
                     getElements = false;
                 }
                 else
                 {
                     temp = Integer.parseInt(let);
-                    arr.add(temp);
+                    reacarr.add(temp);
                     reactants_elements.add(element);
                     element = "";
                     temp = 0;
@@ -97,7 +98,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                 {
                     if(re.substring(re.length()-1).equals("2")||re.substring(re.length()-1).equals("3")||re.substring(re.length()-1).equals("4")||re.substring(re.length()-1).equals("5")||re.substring(re.length()-1).equals("6")||re.substring(re.length()-1).equals("7")||re.substring(re.length()-1).equals("8")||re.substring(re.length()-1).equals("9"))
                     {
-                        arr.add(Integer.parseInt(re.substring(re.length()-1)));
+                        reacarr.add(Integer.parseInt(re.substring(re.length()-1)));
                         reactants_elements.add(let);
                         getElements= false;
                     }
@@ -105,14 +106,14 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                     {
                         element += re.substring(re.length()-1);
                         reactants_elements.add(element);
-                        arr.add(1);
+                        reacarr.add(1);
                     }
                 }
                 else if(re.substring(i+1, i+2).compareTo(re.substring(i+1, i+2).toLowerCase()) != 0)
                 {
 //                    if(!re.substring(i+1,i+2).equals("2")||!re.substring(i+1,i+2).equals("3")||!re.substring(i+1,i+2).equals("4")||!re.substring(i+1,i+2).equals("5")||!re.substring(i+1,i+2).equals("6")||!re.substring(i+1,i+2).equals("7")||!re.substring(i+1,i+2).equals("8")||!re.substring(i+1,i+2).equals("9"))
 //                    {
-                        arr.add(1);
+                        reacarr.add(1);
                         reactants_elements.add(element);
                         element = "";
 //                    }
@@ -125,21 +126,21 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                 {
                     if(re.substring(re.length()-1).equals("2")||re.substring(re.length()-1).equals("3")||re.substring(re.length()-1).equals("4")||re.substring(re.length()-1).equals("5")||re.substring(re.length()-1).equals("6")||re.substring(re.length()-1).equals("7")||re.substring(re.length()-1).equals("8")||re.substring(re.length()-1).equals("9"))
                     {
-                        arr.add(Integer.parseInt(re.substring(re.length()-1)));
+                        reacarr.add(Integer.parseInt(re.substring(re.length()-1)));
                         reactants_elements.add(let);
                     }
                     else
                     {
                         element += re.substring(re.length()-1);
                         reactants_elements.add(element);
-                        arr.add(1);
+                        reacarr.add(1);
                     }
                     getElements = false;
                 }
                 else if(!re.substring(i+1,i+2).equals("2")||re.substring(i+1,i+2).equals("3")||re.substring(i+1,i+2).equals("4")||re.substring(i+1,i+2).equals("5")||re.substring(i+1,i+2).equals("6")||re.substring(i+1,i+2).equals("7")||re.substring(i+1,i+2).equals("8")||re.substring(i+1,i+2).equals("9"))
                 {
                     temp = 1;
-                    arr.add(temp);
+                    reacarr.add(temp);
                     temp = 0;
                 }
             }
@@ -155,87 +156,182 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
         rDuplicates();
         for(int a = 0; a<reactants_elements.size(); a++)
         {
-            relement += (reactants_elements.get(a) + " : " + arr.get(a) + "\n");
+            relement += (reactants_elements.get(a) + " : " + reacarr.get(a) + "\n");
         }
     }
-    public void getProducts()
+    public void getReacElements(String s)
     {
-        String p = products.getText().toString();
-        //can take input right here
-        String prod = p.replaceAll("\\s+","");
         while(getElements)
         {
-            String let = prod.substring(i, i+1);
-            if(let.compareTo(let.toLowerCase()) > 0)
+            if(s.length() == 1)
+            {
+                reactants_elements.add(s);
+                reacarr.add(1);
+                getElements = false;
+            }
+            String let = s.substring(i, i+1);
+            if (let.equals("2")||let.equals("3")||let.equals("4")||let.equals("5")||let.equals("6")||let.equals("7")||let.equals("8")||let.equals("9"))
+            {
+                if(i == s.length()-2)
+                {
+                    reactants_elements.add(element);
+                    reacarr.add(Integer.parseInt(let));
+                    reactants_elements.add(s.substring(s.length()-1));
+                    reacarr.add(1);
+                    getElements = false;
+                }
+                else
+                {
+                    temp = Integer.parseInt(let);
+                    reacarr.add(temp);
+                    reactants_elements.add(element);
+                    element = "";
+                    temp = 0;
+                }
+            }
+            else if((let.toLowerCase()).compareTo(let) > 0)
             {
                 element += let;
-                if(i == prod.length()-1 || i == prod.length())
+                if(i == s.length()-2)
                 {
-                    products_elements.add(element);
-                    if(prod.substring(prod.length()-1).equals("2")||prod.substring(prod.length()-1).equals("3")||prod.substring(prod.length()-1).equals("4")||prod.substring(prod.length()-1).equals("5")||prod.substring(prod.length()-1).equals("6")||prod.substring(prod.length()-1).equals("7")||prod.substring(prod.length()-1).equals("8")||prod.substring(prod.length()-1).equals("9"))
+                    if(s.substring(s.length()-1).equals("2")||s.substring(s.length()-1).equals("3")||s.substring(s.length()-1).equals("4")||s.substring(s.length()-1).equals("5")||s.substring(s.length()-1).equals("6")||s.substring(s.length()-1).equals("7")||s.substring(s.length()-1).equals("8")||s.substring(s.length()-1).equals("9"))
                     {
-                        arr.add(Integer.parseInt(prod.substring(prod.length()-1)));
+                        reacarr.add(Integer.parseInt(s.substring(s.length()-1)));
+                        reactants_elements.add(let);
+                        getElements= false;
                     }
                     else
                     {
-                        arr.add(1);
-                        products_elements.add(prod.substring(prod.length()-1));
-                        arr.add(1);
+                        element += s.substring(s.length()-1);
+                        reactants_elements.add(element);
+                        reacarr.add(1);
                     }
-                    getElements = false;
                 }
-                else if(prod.substring(i+1, i+2).compareTo(prod.substring(i+1, i+2).toLowerCase()) != 0)
+                else if(s.substring(i+1, i+2).compareTo(s.substring(i+1, i+2).toLowerCase()) != 0)
                 {
-                    if(!prod.substring(i+1,i+2).equals("2")||!prod.substring(i+1,i+2).equals("3")||!prod.substring(i+1,i+2).equals("4")||!prod.substring(i+1,i+2).equals("5")||!prod.substring(i+1,i+2).equals("6")||!prod.substring(i+1,i+2).equals("7")||!prod.substring(i+1,i+2).equals("8")||!prod.substring(i+1,i+2).equals("9"))
-                    {
-                        temp = 1;
-                        arr.add(temp);
-                    }
+//                    if(!re.substring(i+1,i+2).equals("2")||!re.substring(i+1,i+2).equals("3")||!re.substring(i+1,i+2).equals("4")||!re.substring(i+1,i+2).equals("5")||!re.substring(i+1,i+2).equals("6")||!re.substring(i+1,i+2).equals("7")||!re.substring(i+1,i+2).equals("8")||!re.substring(i+1,i+2).equals("9"))
+//                    {
+                    reacarr.add(1);
+                    reactants_elements.add(element);
+                    element = "";
+//                    }
                 }
             }
             else if(let.compareTo(let.toLowerCase()) == 0)
             {
                 element += let;
-                if(i == prod.length()-1 || i == prod.length())
+                if(i == s.length()-2)
                 {
-                    products_elements.add(element);
-                    if(prod.substring(prod.length()-1).equals("2")||prod.substring(prod.length()-1).equals("3")||prod.substring(prod.length()-1).equals("4")||prod.substring(prod.length()-1).equals("5")||prod.substring(prod.length()-1).equals("6")||prod.substring(prod.length()-1).equals("7")||prod.substring(prod.length()-1).equals("8")||prod.substring(prod.length()-1).equals("9"))
+                    if(s.substring(s.length()-1).equals("2")||s.substring(s.length()-1).equals("3")||s.substring(s.length()-1).equals("4")||s.substring(s.length()-1).equals("5")||s.substring(s.length()-1).equals("6")||s.substring(s.length()-1).equals("7")||s.substring(s.length()-1).equals("8")||s.substring(s.length()-1).equals("9"))
                     {
-                        arr.add(Integer.parseInt(prod.substring(prod.length()-1)));
+                        reacarr.add(Integer.parseInt(s.substring(s.length()-1)));
+                        reactants_elements.add(let);
                     }
                     else
                     {
-                        arr.add(1);
-                        products_elements.add(prod.substring(prod.length()-1));
-                        arr.add(1);
+                        element += s.substring(s.length()-1);
+                        reactants_elements.add(element);
+                        reacarr.add(1);
                     }
                     getElements = false;
                 }
-                else if(!prod.substring(i+1,i+2).equals("2")||prod.substring(i+1,i+2).equals("3")||prod.substring(i+1,i+2).equals("4")||prod.substring(i+1,i+2).equals("5")||prod.substring(i+1,i+2).equals("6")||prod.substring(i+1,i+2).equals("7")||prod.substring(i+1,i+2).equals("8")||prod.substring(i+1,i+2).equals("9"))
+                else if(!s.substring(i+1,i+2).equals("2")||s.substring(i+1,i+2).equals("3")||s.substring(i+1,i+2).equals("4")||s.substring(i+1,i+2).equals("5")||s.substring(i+1,i+2).equals("6")||s.substring(i+1,i+2).equals("7")||s.substring(i+1,i+2).equals("8")||s.substring(i+1,i+2).equals("9"))
                 {
                     temp = 1;
-                    arr.add(temp);
+                    reacarr.add(temp);
+                    temp = 0;
                 }
             }
-            else if (let.equals("2")||let.equals("3")||let.equals("4")||let.equals("5")||let.equals("6")||let.equals("7")||let.equals("8")||let.equals("9"))
-            {
-                temp = Integer.parseInt(let);
-                arr.add(temp);
-                products_elements.add(element);
-                element = "";
-            }
+
             i++;
-            if(i == prod.length()+1)
+            if(i == s.length())
             {
                 getElements = false;
             }
         }
         // displays the elements isolated on the reactant side
         // to test to make sure my logic works
-        for(int a = 0; a<products_elements.size(); a++)
+        rDuplicates();
+//        for(int a = 0; a<reactants_elements.size(); a++)
+//        {
+//            relement += (reactants_elements.get(a) + " : " + reacarr.get(a) + "\n");
+//        }
+    }
+    public void getProdElements(String comp)
+    {
+        while(getElements)
         {
-            p += (products_elements.get(a) + " : " + arr.get(a) + "\n");
+            String let = comp.substring(i, i+1);
+            if(let.compareTo(let.toLowerCase()) > 0)
+            {
+                element += let;
+                if(i == comp.length()-1 || i == comp.length())
+                {
+                    products_elements.add(element);
+                    if(comp.substring(comp.length()-1).equals("2")||comp.substring(comp.length()-1).equals("3")||comp.substring(comp.length()-1).equals("4")||comp.substring(comp.length()-1).equals("5")||comp.substring(comp.length()-1).equals("6")||comp.substring(comp.length()-1).equals("7")||comp.substring(comp.length()-1).equals("8")||comp.substring(comp.length()-1).equals("9"))
+                    {
+                        prodarr.add(Integer.parseInt(comp.substring(comp.length()-1)));
+                    }
+                    else
+                    {
+                        prodarr.add(1);
+                        products_elements.add(comp.substring(comp.length()-1));
+                        prodarr.add(1);
+                    }
+                    getElements = false;
+                }
+                else if(comp.substring(i+1, i+2).compareTo(comp.substring(i+1, i+2).toLowerCase()) != 0)
+                {
+                    if(!comp.substring(i+1,i+2).equals("2")||!comp.substring(i+1,i+2).equals("3")||!comp.substring(i+1,i+2).equals("4")||!comp.substring(i+1,i+2).equals("5")||!comp.substring(i+1,i+2).equals("6")||!comp.substring(i+1,i+2).equals("7")||!comp.substring(i+1,i+2).equals("8")||!comp.substring(i+1,i+2).equals("9"))
+                    {
+                        temp = 1;
+                        prodarr.add(temp);
+                    }
+                }
+            }
+            else if(let.compareTo(let.toLowerCase()) == 0)
+            {
+                element += let;
+                if(i == comp.length()-1 || i == comp.length())
+                {
+                    products_elements.add(element);
+                    if(comp.substring(comp.length()-1).equals("2")||comp.substring(comp.length()-1).equals("3")||comp.substring(comp.length()-1).equals("4")||comp.substring(comp.length()-1).equals("5")||comp.substring(comp.length()-1).equals("6")||comp.substring(comp.length()-1).equals("7")||comp.substring(comp.length()-1).equals("8")||comp.substring(comp.length()-1).equals("9"))
+                    {
+                        prodarr.add(Integer.parseInt(comp.substring(comp.length()-1)));
+                    }
+                    else
+                    {
+                        prodarr.add(1);
+                        products_elements.add(comp.substring(comp.length()-1));
+                        prodarr.add(1);
+                    }
+                    getElements = false;
+                }
+                else if(!comp.substring(i+1,i+2).equals("2")||comp.substring(i+1,i+2).equals("3")||comp.substring(i+1,i+2).equals("4")||comp.substring(i+1,i+2).equals("5")||comp.substring(i+1,i+2).equals("6")||comp.substring(i+1,i+2).equals("7")||comp.substring(i+1,i+2).equals("8")||comp.substring(i+1,i+2).equals("9"))
+                {
+                    temp = 1;
+                    prodarr.add(temp);
+                }
+            }
+            else if (let.equals("2")||let.equals("3")||let.equals("4")||let.equals("5")||let.equals("6")||let.equals("7")||let.equals("8")||let.equals("9"))
+            {
+                temp = Integer.parseInt(let);
+                prodarr.add(temp);
+                products_elements.add(element);
+                element = "";
+            }
+            i++;
+            if(i == comp.length()+1)
+            {
+                getElements = false;
+            }
         }
+        // displays the elements isolated on the reactant side
+        // to test to make sure my logic works
+//        for(int a = 0; a<products_elements.size(); a++)
+//        {
+//            output += (products_elements.get(a) + " : " + arr.get(a) + "\n");
+//        }
     }
     public void getrCompounds()
     {
@@ -256,7 +352,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             i++;
             if(i == re.length())
             {
-                pcompounds.add(compound);
+                rcompounds.add(compound);
                 getpc = false;
             }
         }
@@ -311,10 +407,10 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                 {
                     if(a != b)
                     {
-                        int dup1 = arr.get(a) + arr.get(b);
+                        int dup1 = reacarr.get(a) + reacarr.get(b);
                         reactants_elements.remove(b);
-                        arr.remove(a);
-                        arr.add(a, dup1);
+                        reacarr.remove(a);
+                        reacarr.add(a, dup1);
 
                     }
                 }
@@ -330,6 +426,15 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             {
                 balancedeq = balancedeq.substring(a+4);
             }
+        }
+    }
+    public void setBalancedEq()
+    {
+        getrCompounds();
+        getpCompounds();
+        for(int i = 0; i < rcompounds.size(); i++)
+        {
+            getReacElements((rcompounds.get(i)));
         }
     }
 }
