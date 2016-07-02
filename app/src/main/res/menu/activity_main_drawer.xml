@@ -59,5 +59,29 @@
             android:icon="@drawable/_coordinate_complex"
             android:title="Coordinate Compounds" />
     </group>
+    <item android:title="@string/gTitle1">
+        <menu>
+            <item
+                android:id="@+id/nav_sol_rule"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/Solubility" />
+            <item
+                android:id="@+id/nav_strong_acids"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/Acids" />
 
+        </menu>
+    </item>
+    <item android:title="@string/Calculators">
+        <menu>
+            <item
+                android:id="@+id/nav_BEQ"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/BEqua" />
+            <item
+                android:id="@+id/nav_pHcalc"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/FindingPH" />
+        </menu>
+    </item>
 </menu>
