@@ -36,7 +36,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     EditText products;
     TextView beq;
     Button go;
-    String balancedeq;
+    String balancedEQ;
     int temp;
     @Nullable
     @Override
@@ -51,11 +51,10 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     }
     public void onClick(View v)
     {
-        getpCompounds();
+
         beq = (TextView) rootview.findViewById(R.id.balanced_equation);
         //have to create many methods to achieve
-//        beq.setText(balancedeq);
-        beq.setText(balancedeq);
+        beq.setText(balancedEQ);
     }
     //Can I use this to isolate individual elements from each reactant/product?
     //Will be more simple alternative to what we currently have
@@ -418,23 +417,60 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
         }
     }
     //sometimes the outputs have "null" in them
-    public void removeNull()
+    public void removeNull(String s)
     {
-        for(int a = 0; a<balancedeq.length() - 4; a++)
+        for(int a = 0; a<s.length() - 4; a++)
         {
-            if(balancedeq.substring(a, a+4).equals("null"))
+            if(s.substring(a, a+4).equals("null"))
             {
-                balancedeq = balancedeq.substring(a+4);
+                s = s.substring(a+4);
             }
         }
+    }
+    public void removeExcess()
+    {
+
     }
     public void setBalancedEq()
     {
         getrCompounds();
         getpCompounds();
-        for(int i = 0; i < rcompounds.size(); i++)
+        while(reacarr != prodarr)
         {
-            getReacElements((rcompounds.get(i)));
+            for(int i = 0; i < rcompounds.size(); i++)
+            {
+                getReacElements((rcompounds.get(i)));
+            }
+            for(int i = 0; i<pcompounds.size(); i++)
+            {
+                getProdElements(pcompounds.get(i));
+            }
+            int rand = (int) ((Math.random()*(rcompounds.size()-1)) + 1);
+            rcompounds.add(rcompounds.get(rand));
+            for(int i = 0; i < rcompounds.size(); i++)
+            {
+                getReacElements((rcompounds.get(i)));
+            }
+            int prand = (int) ((Math.random()*(pcompounds.size()-1)) + 1);
+            pcompounds.add(pcompounds.get(prand));
+            for(int i = 0; i<pcompounds.size(); i++)
+            {
+                getProdElements(pcompounds.get(i));
+            }
+        }
+        //need to create a method to get rid of duplicates within ArrayLists
+        for (int i = 0; i<rcompounds.size(); i++)
+        {
+            balancedEQ += reacarr.get(i) + rcompounds.get(i) + " + ";
+        }
+        if (balancedEQ.substring(balancedEQ.length()-1).equals("+"))
+        {
+            balancedEQ = balancedEQ.substring(0, balancedEQ.length()-1);
+        }
+        balancedEQ += "  →  ";
+        for (int i = 0; i<pcompounds.size(); i++)
+        {
+            balancedEQ += prodarr.get(i) + pcompounds.get(i) + "+";
         }
     }
 }

@@ -6,7 +6,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reactants"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:inputType="text"
         android:layout_above="@+id/balanced_equation"
         android:layout_alignLeft="@+id/title"
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/products"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:inputType="text"
         android:layout_alignTop="@+id/reactants"
         android:layout_alignRight="@+id/title"
@@ -74,10 +74,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_above="@+id/ProdLabel"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button" />
+        android:id="@+id/arrow_bold"
+        android:src="@mipmap/arrow"
+        android:layout_above="@+id/ReacLabel"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

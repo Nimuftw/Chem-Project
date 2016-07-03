@@ -69,6 +69,14 @@
                 android:id="@+id/nav_strong_acids"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/Acids" />
+            <item
+                android:id="@+id/nav_ox_rule"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/OxRules" />
+            <item
+                android:id="@+id/nav_red_potentials"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/OxRules" />
 
         </menu>
     </item>

@@ -11,5 +11,13 @@
     <string name="button">GO!</string>
     <string name = "beq">Balancing Equations</string>
     <string name = "nav_title">General Chemistry</string>
+    <string name = "gTitle1">Lists</string>
+    <string name = "Solubility">Solubility Rules</string>
+    <string name = "Acids">Strong Acids/Bases</string>
+    <string name = "Calculators">Calculators</string>
+    <string name = "BEqua">Balancing Equations</string>
+    <string name = "FindingPH">pH Calculator</string>
+    <string name = "OxRules">Rules for Determining Oxidation States</string>
+    <string name = "RedPotentials">Some Common Reduction Potentials</string>
 
 </resources>
