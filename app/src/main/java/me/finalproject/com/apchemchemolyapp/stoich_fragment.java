@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -154,7 +156,6 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
         }
         // displays the elements isolated on the reactant side
         // to test to make sure my logic works
-        rDuplicates();
         for(int a = 0; a<reactants_elements.size(); a++)
         {
             relement += (reactants_elements.get(a) + " : " + reacarr.get(a) + "\n");
@@ -252,7 +253,6 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
         }
         // displays the elements isolated on the reactant side
         // to test to make sure my logic works
-        rDuplicates();
 //        for(int a = 0; a<reactants_elements.size(); a++)
 //        {
 //            relement += (reactants_elements.get(a) + " : " + reacarr.get(a) + "\n");
@@ -402,23 +402,20 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             }
         }
     }
-    public void rDuplicates()
+    public void removeDuplicates(ArrayList<String> Strings, ArrayList<Integer> arr)
     {
-        for(int a = 0; a<reactants_elements.size(); a++)
+        for(int a = 0; a<Strings.size(); a++)
         {
-            for(int b = 0; b<reactants_elements.size(); b++)
+            for(int b = 0; b<Strings.size(); b++)
             {
-                String dup = reactants_elements.get(a);
-                if(dup.equals(reactants_elements.get(b)))
+                String dup = Strings.get(a);
+                if(dup.equals(Strings.get(b)) && a != b)
                 {
-                    if(a != b)
-                    {
-                        int dup1 = reacarr.get(a) + reacarr.get(b);
-                        reactants_elements.remove(b);
-                        reacarr.remove(a);
-                        reacarr.add(a, dup1);
-
-                    }
+                        int dup1 = arr.get(a) + arr.get(b);
+                        Strings.remove(b);
+                        arr.remove(a);
+                        arr.add(a, dup1);
+                        arr.remove(b);
                 }
             }
         }
@@ -449,7 +446,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                         strings.remove(b);
                         arr.remove(b);
                         arr.remove(a);
-                        arr.add(dup1);
+                        arr.add(a, dup1);
                     }
                 }
             }
@@ -464,22 +461,26 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             for(int i = 0; i < rcompounds.size(); i++)
             {
                 getReacElements((rcompounds.get(i)));
+                removeDuplicates(reactants_elements, reacarr);
             }
             for(int i = 0; i<pcompounds.size(); i++)
             {
                 getProdElements(pcompounds.get(i));
+                removeDuplicates(products_elements, prodarr);
             }
             int rand = (int) ((Math.random()*(rcompounds.size()-1)) + 1);
             rcompounds.add(rcompounds.get(rand));
             for(int i = 0; i < rcompounds.size(); i++)
             {
                 getReacElements((rcompounds.get(i)));
+                removeDuplicates(reactants_elements, reacarr);
             }
             int prand = (int) ((Math.random()*(pcompounds.size()-1)) + 1);
             pcompounds.add(pcompounds.get(prand));
             for(int i = 0; i<pcompounds.size(); i++)
             {
                 getProdElements(pcompounds.get(i));
+                removeDuplicates(products_elements, prodarr);
             }
             removeExcess(rcompounds, rcoeffs);
             removeExcess(pcompounds, pcoeffs);
@@ -499,5 +500,6 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
         {
             balancedEQ += prodarr.get(i) + pcompounds.get(i) + "+";
         }
+        removeNull(balancedEQ);
     }
 }
