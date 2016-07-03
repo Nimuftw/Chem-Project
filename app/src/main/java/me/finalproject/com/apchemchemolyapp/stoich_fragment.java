@@ -481,6 +481,8 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             {
                 getProdElements(pcompounds.get(i));
             }
+            removeExcess(rcompounds, rcoeffs);
+            removeExcess(pcompounds, pcoeffs);
         }
         removeExcess(rcompounds, rcoeffs);
         removeExcess(pcompounds, pcoeffs);
