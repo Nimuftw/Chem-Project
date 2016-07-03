@@ -25,6 +25,8 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     ArrayList<String> products_elements = new ArrayList<>();
     ArrayList<String> rcompounds = new ArrayList<>();
     ArrayList<String> pcompounds = new ArrayList<>();
+    ArrayList<Integer> rcoeffs = new ArrayList<>();
+    ArrayList<Integer> pcoeffs = new ArrayList<>();
     boolean getElements = true;
     String relement;
     String pelement;
@@ -51,7 +53,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     }
     public void onClick(View v)
     {
-
+        setBalancedEq();
         beq = (TextView) rootview.findViewById(R.id.balanced_equation);
         //have to create many methods to achieve
         beq.setText(balancedEQ);
@@ -346,12 +348,14 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             else
             {
                 rcompounds.add(compound);
+                rcoeffs.add(1);
                 compound = "";
             }
             i++;
             if(i == re.length())
             {
                 rcompounds.add(compound);
+                rcoeffs.add(1);
                 getpc = false;
             }
         }
@@ -373,15 +377,18 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             else
             {
                 pcompounds.add(compound);
+                pcoeffs.add(1);
                 compound = "";
             }
             i++;
             if(i == prod.length())
             {
                 pcompounds.add(compound);
+                pcoeffs.add(1);
                 getpc = false;
             }
         }
+        //get rid of coefficients
         for(int a = 0; a < pcompounds.size(); a++)
         {
             String s = pcompounds.get(a);
@@ -427,9 +434,26 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             }
         }
     }
-    public void removeExcess()
+    public void removeExcess(ArrayList<String> strings, ArrayList<Integer> arr)
     {
-
+        for (int a = 0; a < strings.size(); a++)
+        {
+            for(int b = 0; b<strings.size(); b++)
+            {
+                String dup = strings.get(a);
+                if(dup.equals(strings.get(b)))
+                {
+                    if(a != b)
+                    {
+                        int dup1 = arr.get(a) + arr.get(b);
+                        strings.remove(b);
+                        arr.remove(b);
+                        arr.remove(a);
+                        arr.add(dup1);
+                    }
+                }
+            }
+        }
     }
     public void setBalancedEq()
     {
@@ -458,7 +482,8 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                 getProdElements(pcompounds.get(i));
             }
         }
-        //need to create a method to get rid of duplicates within ArrayLists
+        removeExcess(rcompounds, rcoeffs);
+        removeExcess(pcompounds, pcoeffs);
         for (int i = 0; i<rcompounds.size(); i++)
         {
             balancedEQ += reacarr.get(i) + rcompounds.get(i) + " + ";
