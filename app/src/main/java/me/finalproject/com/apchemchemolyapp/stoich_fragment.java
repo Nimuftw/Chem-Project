@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.util.Collections;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -338,6 +339,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     {
         String reactant = reactants.getText().toString();
         String re = reactant.replaceAll("\\s+","");
+        i = 0;
         while(getrc)
         {
             String let = re.substring(i, i+1);
@@ -356,7 +358,19 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
             {
                 rcompounds.add(compound);
                 rcoeffs.add(1);
-                getpc = false;
+                getrc = false;
+            }
+        }
+        for(int a = 0; a < rcompounds.size(); a++)
+        {
+            String s = rcompounds.get(a);
+            if (s.substring(0,1).equals("2")||s.substring(0,1).equals("3")||s.substring(0,1).equals("4")||s.substring(0,1).equals("5")||s.substring(0,1).equals("6")||s.substring(0,1).equals("7")||s.substring(0,1).equals("8")||s.substring(0,1).equals("9"))
+            {
+                String d = s.substring(1);
+                s = d;
+                rcompounds.remove(a);
+                rcompounds.add(a, s);
+                s = "";
             }
         }
         compound = "";
@@ -463,27 +477,22 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
                 getReacElements((rcompounds.get(i)));
                 removeDuplicates(reactants_elements, reacarr);
             }
-            for(int i = 0; i<pcompounds.size(); i++)
-            {
-                getProdElements(pcompounds.get(i));
-                removeDuplicates(products_elements, prodarr);
-            }
-            int rand = (int) ((Math.random()*(rcompounds.size()-1)) + 1);
+            int rand = (int) ((Math.random()*(rcompounds.size()-2)) + 1);
             rcompounds.add(rcompounds.get(rand));
-            for(int i = 0; i < rcompounds.size(); i++)
-            {
-                getReacElements((rcompounds.get(i)));
-                removeDuplicates(reactants_elements, reacarr);
-            }
-            int prand = (int) ((Math.random()*(pcompounds.size()-1)) + 1);
-            pcompounds.add(pcompounds.get(prand));
+            rcoeffs.add(1);
+            removeExcess(rcompounds, rcoeffs);
             for(int i = 0; i<pcompounds.size(); i++)
             {
                 getProdElements(pcompounds.get(i));
                 removeDuplicates(products_elements, prodarr);
             }
-            removeExcess(rcompounds, rcoeffs);
+            int prand = (int) ((Math.random()*(pcompounds.size()-2)) + 1);
+            pcompounds.add(pcompounds.get(prand));
+            pcoeffs.add(1);
             removeExcess(pcompounds, pcoeffs);
+            //sort arrays to make sure we CAN fulfill the while loop statement
+            Collections.sort(reacarr);
+            Collections.sort(prodarr);
         }
         removeExcess(rcompounds, rcoeffs);
         removeExcess(pcompounds, pcoeffs);

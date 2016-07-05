@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/RateLawCalc"
+        android:id="@+id/textView13"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numReactants"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/textView13"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Trial"
+        android:layout_below="@+id/numReactants"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="36dp"
+        android:textSize="30sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/concA"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/textView13"
+        android:layout_alignStart="@+id/textView13"
+        android:textSize="25sp"
+        android:layout_toRightOf="@+id/Trial"
+        android:layout_toEndOf="@+id/Trial"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+
+        android:id="@+id/concB"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/concA"
+        android:layout_toEndOf="@+id/concA"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/concC"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/concB"
+        android:layout_toEndOf="@+id/concB"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/concD"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/concC"
+        android:layout_toEndOf="@+id/concC"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tv1"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/Trial"
+        android:layout_alignStart="@+id/Trial"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tv2"
+        android:layout_below="@+id/tv1"
+        android:layout_alignLeft="@+id/tv1"
+        android:layout_alignStart="@+id/tv1"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tv3"
+        android:layout_below="@+id/tv2"
+        android:layout_alignLeft="@+id/tv2"
+        android:layout_alignStart="@+id/tv2"
+        android:textSize="18sp"/>
+
+
+
+
+</RelativeLayout>

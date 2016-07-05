@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_ContentReview"
-            android:icon="@drawable/_coordinate_complex"
-            android:title="Content Review" />
+    <group android:checkableBehavior="single" android:title = "@string/Title">
         <item
             android:id="@+id/nav_QuantumMechanics"
             android:icon="@drawable/_quantum"
@@ -63,7 +59,7 @@
         <menu>
             <item
                 android:id="@+id/nav_sol_rule"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_send"
                 android:title="@string/Solubility" />
             <item
                 android:id="@+id/nav_strong_acids"
@@ -71,11 +67,11 @@
                 android:title="@string/Acids" />
             <item
                 android:id="@+id/nav_ox_rule"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_send"
                 android:title="@string/OxRules" />
             <item
                 android:id="@+id/nav_red_potentials"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_send"
                 android:title="@string/OxRules" />
 
         </menu>
@@ -84,12 +80,16 @@
         <menu>
             <item
                 android:id="@+id/nav_BEQ"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_send"
                 android:title="@string/BEqua" />
             <item
                 android:id="@+id/nav_pHcalc"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/FindingPH" />
+            <item
+                android:id="@+id/rate_law"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/RateLawCalc" />
         </menu>
     </item>
 </menu>

@@ -2,22 +2,33 @@
 
     <string name="app_name">APChem/ChemOly App</string>
     <string name="acid">Acids and Bases</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="welcomestring">Welcome to Android Studio!</string>
     <string name="button">GO!</string>
-    <string name = "beq">Balancing Equations</string>
-    <string name = "nav_title">General Chemistry</string>
-    <string name = "gTitle1">Lists</string>
-    <string name = "Solubility">Solubility Rules</string>
-    <string name = "Acids">Strong Acids/Bases</string>
-    <string name = "Calculators">Calculators</string>
-    <string name = "BEqua">Balancing Equations</string>
-    <string name = "FindingPH">pH Calculator</string>
-    <string name = "OxRules">Rules for Determining Oxidation States</string>
-    <string name = "RedPotentials">Some Common Reduction Potentials</string>
-
+    <string name="beq">Balancing Equations</string>
+    <string name="nav_title">General Chemistry</string>
+    <string name="gTitle1">Lists</string>
+    <string name="Solubility">Solubility Rules</string>
+    <string name="Acids">Strong Acids/Bases</string>
+    <string name="Calculators">Calculators</string>
+    <string name="BEqua">Balancing Equations</string>
+    <string name="FindingPH">pH Calculator</string>
+    <string name="OxRules">Rules for Determining Oxidation States</string>
+    <string name="RedPotentials">Some Common Reduction Potentials</string>
+    <string name="Title">Content Review</string>
+    <string name="Gibbs">Free Energy Calculator</string>
+    <string name="RateLawCalc">Rate Law Calculator</string>
+    <string name = "t1">Trial</string>
+    <!-- Fills up ArrayAdapter for Spinner -->
+    <string-array name="numOfReactants">
+        <item>How Many Reactants are in this Reaction?</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

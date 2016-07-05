@@ -208,10 +208,10 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new thermo_fragment())
                     .commit();
         }
-        else if(id == R.id.nav_ContentReview)
+        else if(id == R.id.rate_law)
         {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new contentreview_fragment())
+                    .replace(R.id.content_frame, new rLawCalc())
                     .commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
