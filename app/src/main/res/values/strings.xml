@@ -21,7 +21,7 @@
     <string name="Gibbs">Free Energy Calculator</string>
     <string name="RateLawCalc">Rate Law Calculator</string>
     <string name = "t1">Trial</string>
-    <string name = "rxnrate">Rate of Reaction</string>
+    <string name = "rxnrate">Reaction Rate</string>
 
     <!-- Fills up ArrayAdapter for Spinner -->
     <string-array name="numOfReactants">
