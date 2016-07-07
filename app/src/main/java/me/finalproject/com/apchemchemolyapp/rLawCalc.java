@@ -112,9 +112,9 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         r2.setText("2");
                         A = (TextView) rootview.findViewById(R.id.concA);
                         A.setText("[A]");
-                        C = (TextView) rootview.findViewById(R.id.concC);
-                        C.setText(R.string.rxnrate);
-                        C.setTextSize(15);
+                        B = (TextView) rootview.findViewById(R.id.concB);
+                        B.setText(R.string.rxnrate);
+                        B.setTextSize(15);
                         A1.setVisibility(View.VISIBLE);
                         A3.setVisibility(View.VISIBLE);
                         B1.setVisibility(View.VISIBLE);
@@ -125,7 +125,7 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                             case1Ints();
                         }
                         Answer = (TextView) rootview.findViewById(R.id.Answer);
-                        Answer.setText(resp);
+                        Answer.setText("Set Text");
                         break;
 
                     case "2":
