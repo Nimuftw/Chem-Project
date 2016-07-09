@@ -14,13 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.w3c.dom.Text;
-
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
-//import android.widget.Toast;
-
 
 
 public class rLawCalc extends Fragment implements View.OnClickListener
@@ -104,28 +100,29 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                 switch (test)
                 {
                     case "1":
-                        trial = (TextView) rootview.findViewById(R.id.Trial);
-                        trial.setText(R.string.t1);
-                        r1 = (TextView) rootview.findViewById(R.id.tv1);
-                        r1.setText("1");
-                        r2 = (TextView) rootview.findViewById(R.id.tv2);
-                        r2.setText("2");
-                        A = (TextView) rootview.findViewById(R.id.concA);
-                        A.setText("[A]");
-                        B = (TextView) rootview.findViewById(R.id.concB);
-                        B.setText(R.string.rxnrate);
-                        B.setTextSize(15);
-                        A1.setVisibility(View.VISIBLE);
-                        A3.setVisibility(View.VISIBLE);
-                        B1.setVisibility(View.VISIBLE);
-                        B3.setVisibility(View.VISIBLE);
+//                        trial = (TextView) rootview.findViewById(R.id.Trial);
+//                        trial.setText(R.string.t1);
+//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
+//                        r1.setText("1");
+//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
+//                        r2.setText("2");
+//                        A = (TextView) rootview.findViewById(R.id.concA);
+//                        A.setText("   [A]");
+//                        B = (TextView) rootview.findViewById(R.id.concB);
+//                        B.setText(R.string.rxnrate);
+//                        B.setTextSize(15);
+//                        A1.setVisibility(View.VISIBLE);
+//                        A2.setVisibility(View.VISIBLE);
+//                        B1.setVisibility(View.VISIBLE);
+//                        B2.setVisibility(View.VISIBLE);
                         GO.setVisibility(View.VISIBLE);
                         if (onClick)
                         {
+
+                            Answer = (TextView) rootview.findViewById(R.id.Answer);
+                            Answer.setText(R.string.test);
                             case1Ints();
                         }
-                        Answer = (TextView) rootview.findViewById(R.id.Answer);
-                        Answer.setText("Set Text");
                         break;
 
                     case "2":
@@ -147,7 +144,6 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         {
                             case2Ints();
                         }
-
                         onClick = false;
                         break;
 

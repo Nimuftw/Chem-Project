@@ -4,10 +4,10 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:fillViewport="true">
-<RelativeLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
 
+<TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -17,8 +17,8 @@ android:fillViewport="true">
                 android:id="@+id/textView13"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="35dp"
-                android:layout_column="0" />
+                android:layout_marginTop="35dp"/>
+                <!--android:layout_column="0" -->
 
 
             <Spinner
@@ -30,176 +30,229 @@ android:fillViewport="true">
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
+    <TableRow
+        android:layout_marginTop = "32dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/Trial"
-                android:textSize="30sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/Trial"
+            android:textSize="30sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/concA"
-                android:textSize="20sp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_alignBottom="@+id/Trial"
-                android:layout_alignLeft="@+id/textView13"
-                android:layout_alignStart="@+id/textView13" />
+        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/concA"
+                        android:textSize="20sp"
+                        android:layout_marginRight = "32dp"
+                        android:layout_marginEnd = "32dp"
+                        android:layout_column="4"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/concB"
+                android:layout_toEndOf="@+id/concB" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/concB"
-                android:textSize="20sp"
-                android:layout_marginRight="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_alignBottom="@+id/Trial"
-                android:layout_toLeftOf="@+id/concC"
-                android:layout_toStartOf="@+id/concC" />
+        <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/concB"
+                    android:textSize="20sp"
+                    android:layout_column="6"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginEnd="32dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/concC"
-                android:textSize="20sp"
-                android:layout_alignBaseline="@+id/concB"
-                android:layout_alignBottom="@+id/concB"
-                android:layout_toRightOf="@+id/textView13"
-                android:layout_toEndOf="@+id/textView13"
-                android:layout_column="4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/concC"
+            android:textSize="20sp"
+            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_column="8" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/concD"
-                android:textSize="20sp"
-                android:layout_marginRight="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_alignBaseline="@+id/concC"
-                android:layout_alignBottom="@+id/concC"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_column="5" />
+        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/concD"
+                        android:textSize="20sp"
+                        android:layout_marginRight="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_column="5" />
 
+    </TableRow>
 
+    <!--android:layout_alignBottom="@+id/Trial"-->
+                    <!--android:layout_alignLeft="@+id/textView13"-->
+                    <!--android:layout_alignStart="@+id/textView13" -->
 
+    <!--android:layout_alignBottom="@+id/Trial"-->
+                    <!--android:layout_toLeftOf="@+id/concC"-->
+                    <!--android:layout_toStartOf="@+id/concC" -->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:id="@+id/tv1"
-                android:layout_centerVertical="true"
-                android:layout_alignLeft="@+id/Trial"
-                android:layout_alignStart="@+id/Trial"
-                android:textSize="18sp"/>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/A1"
-                android:inputType="text"/>
+        <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/tv1"
+            android:textSize="18sp"
+            />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/A2"
-                android:inputType="text"/>
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/A1"
+                    android:inputType="text"
+            android:layout_column="4" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/A3"
-                android:inputType="text"
-                android:layout_column="4" />
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/A2"
+                    android:inputType="text"
+            android:layout_column="6" />
 
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/A3"
+                    android:inputType="text"
+            android:layout_column="8" />
+    </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:id="@+id/tv2"
-                android:textSize="18sp"
-                android:layout_marginTop="18dp"
-                android:layout_below="@+id/tv1"
-                android:layout_alignLeft="@+id/tv1"
-                android:layout_alignStart="@+id/tv1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/B1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/B2" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/B3"
-                android:layout_column="4" />
+    <!--android:layout_alignBaseline="@+id/concC"-->
+                    <!--android:layout_alignBottom="@+id/concC"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_alignParentEnd="true"-->
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:id="@+id/tv3"
-                android:textSize="18sp"
-                android:layout_marginTop="18dp"
-                android:layout_below="@+id/tv2"
-                android:layout_alignLeft="@+id/tv2"
-                android:layout_alignStart="@+id/tv2" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/C1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/C2" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/C3"
-                android:layout_column="4" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button"
-        android:id="@+id/GO"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/tv3"
-        android:layout_toLeftOf="@+id/concB"
-        android:layout_toStartOf="@+id/concB" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Answer"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp" />
+    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_alignLeft="@+id/Trial"-->
+                    <!--android:layout_alignStart="@+id/Trial"-->
 
 
-</RelativeLayout>
+    <!--android:layout_column="4" -->
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/tv2"
+                    android:textSize="18sp"
+                    android:layout_marginTop="18dp"
+                    />
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/B1"
+                    android:inputType="text"
+            android:layout_column="4" />
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/B2"
+                    android:inputType="text"
+            android:layout_column="6" />
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/B3"
+                    android:inputType="text"
+            android:layout_column="8" />
+
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/C1"
+            android:inputType="text"
+            android:layout_column="4" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/C2"
+            android:inputType="text"
+            android:layout_column="6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/tv3"
+            android:textSize="18sp"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/tv2"
+            android:layout_alignLeft="@+id/tv2"
+            android:layout_alignStart="@+id/tv2"
+            android:layout_column="10" />
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/C3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:inputType="text"
+                    android:layout_column="8"/>
+    </TableRow>
+
+    <!--android:layout_column="4"-->
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button"
+            android:id="@+id/GO"
+            android:layout_marginTop="10dp"
+            android:layout_above="@+id/Answer"
+            android:layout_centerHorizontal="true"
+            android:layout_column="6" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/Answer"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_column="6" />
+    </TableRow>
+
+
+</TableLayout>
 </ScrollView>

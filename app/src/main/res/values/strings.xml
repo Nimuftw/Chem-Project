@@ -22,7 +22,7 @@
     <string name="RateLawCalc">Rate Law Calculator</string>
     <string name = "t1">Trial</string>
     <string name = "rxnrate">Reaction Rate</string>
-
+    <string name =  "test">Testing</string>
     <!-- Fills up ArrayAdapter for Spinner -->
     <string-array name="numOfReactants">
         <item>How Many Reactants are in this Reaction?</item>
