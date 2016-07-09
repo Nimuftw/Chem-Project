@@ -100,27 +100,26 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                 switch (test)
                 {
                     case "1":
-//                        trial = (TextView) rootview.findViewById(R.id.Trial);
-//                        trial.setText(R.string.t1);
-//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
-//                        r1.setText("1");
-//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
-//                        r2.setText("2");
-//                        A = (TextView) rootview.findViewById(R.id.concA);
-//                        A.setText("   [A]");
-//                        B = (TextView) rootview.findViewById(R.id.concB);
-//                        B.setText(R.string.rxnrate);
-//                        B.setTextSize(15);
-//                        A1.setVisibility(View.VISIBLE);
-//                        A2.setVisibility(View.VISIBLE);
-//                        B1.setVisibility(View.VISIBLE);
-//                        B2.setVisibility(View.VISIBLE);
+                        trial = (TextView) rootview.findViewById(R.id.Trial);
+                        trial.setText(R.string.t1);
+                        r1 = (TextView) rootview.findViewById(R.id.tv1);
+                        r1.setText("1");
+                        r2 = (TextView) rootview.findViewById(R.id.tv2);
+                        r2.setText("2");
+                        A = (TextView) rootview.findViewById(R.id.concA);
+                        A.setText("   [A]");
+                        B = (TextView) rootview.findViewById(R.id.concB);
+                        B.setText(R.string.rxnrate);
+                        B.setTextSize(15);
+                        A1.setVisibility(View.VISIBLE);
+                        A2.setVisibility(View.VISIBLE);
+                        B1.setVisibility(View.VISIBLE);
+                        B2.setVisibility(View.VISIBLE);
                         GO.setVisibility(View.VISIBLE);
                         if (onClick)
                         {
-
                             Answer = (TextView) rootview.findViewById(R.id.Answer);
-                            Answer.setText(R.string.test);
+                            Answer.setText("Test");
                             case1Ints();
                         }
                         break;
@@ -204,15 +203,100 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         C3.setVisibility(View.VISIBLE);
                         break;
                 }
-
-
+//                while(!onClick)
+//                {
+//                    if (test.equals("1"))
+//                    {
+//                        trial = (TextView) rootview.findViewById(R.id.Trial);
+//                        trial.setText(R.string.t1);
+//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
+//                        r1.setText("1");
+//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
+//                        r2.setText("2");
+//                        A = (TextView) rootview.findViewById(R.id.concA);
+//                        A.setText("   [A]");
+//                        B = (TextView) rootview.findViewById(R.id.concB);
+//                        B.setText(R.string.rxnrate);
+//                        B.setTextSize(15);
+//                        A1.setVisibility(View.VISIBLE);
+//                        A2.setVisibility(View.VISIBLE);
+//                        B1.setVisibility(View.VISIBLE);
+//                        B2.setVisibility(View.VISIBLE);
+//                        GO.setVisibility(View.VISIBLE);
+//                    }
+//                    else if (test.equals("2"))
+//                    {
+//                        trial = (TextView) rootview.findViewById(R.id.Trial);
+//                        trial.setText(R.string.t1);
+//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
+//                        r1.setText("1");
+//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
+//                        r2.setText("2");
+//                        A = (TextView) rootview.findViewById(R.id.concA);
+//                        A.setText("[A]");
+//                        B = (TextView) rootview.findViewById(R.id.concB);
+//                        B.setText("[B]");
+//                        A1.setVisibility(View.VISIBLE);
+//                        A2.setVisibility(View.VISIBLE);
+//                        B1.setVisibility(View.VISIBLE);
+//                        B2.setVisibility(View.VISIBLE);
+//                    }
+//                    else if (test.equals("3"))
+//                    {
+//                        trial = (TextView) rootview.findViewById(R.id.Trial);
+//                        trial.setText(R.string.t1);
+//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
+//                        r1.setText("1");
+//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
+//                        r2.setText("2");
+//                        r3 = (TextView) rootview.findViewById(R.id.tv3);
+//                        r3.setText("3");
+//                        A = (TextView) rootview.findViewById(R.id.concA);
+//                        A.setText("[A]");
+//                        B = (TextView) rootview.findViewById(R.id.concB);
+//                        B.setText("[B]");
+//                        C = (TextView) rootview.findViewById(R.id.concC);
+//                        C.setText("[C]");
+//                        A1.setVisibility(View.VISIBLE);
+//                        A2.setVisibility(View.VISIBLE);
+//                        A3.setVisibility(View.VISIBLE);
+//                        B1.setVisibility(View.VISIBLE);
+//                        B2.setVisibility(View.VISIBLE);
+//                        B3.setVisibility(View.VISIBLE);
+//                        C1.setVisibility(View.VISIBLE);
+//                        C2.setVisibility(View.VISIBLE);
+//                        C3.setVisibility(View.VISIBLE);
+//                    }
+//                }
+//                if (test.equals("1"))
+//                {
+//                    case1Ints();
+//                    Answer = (TextView) rootview.findViewById(R.id.Answer);
+//                    Answer.setText(resp);
+//                }
+//                else if (test.equals("2"))
+//                {
+//                    case2Ints();
+//                    Answer = (TextView) rootview.findViewById(R.id.Answer);
+//                    Answer.setText(resp);
+//                }
+//                else if (test.equals("3"))
+//                {
+//                    case3Ints();
+//                    Answer = (TextView) rootview.findViewById(R.id.Answer);
+//                    Answer.setText(resp);
+//                }
             }
             public void onNothingSelected(AdapterView<?> parent)
             {
-
+                Toast.makeText(getActivity(), "Please select an Option", Toast.LENGTH_LONG).show();
             }
         });
         return rootview;
+    }
+    public void onClick(View v)
+    {
+        onClick = true;
     }
     public void case1Ints()
     {
@@ -268,8 +352,5 @@ public class rLawCalc extends Fragment implements View.OnClickListener
         concC2 = Integer.parseInt(C_2);
         concC3 = Integer.parseInt(C_3);
     }
-    public void onClick(View v)
-    {
-        onClick = true;
-    }
+
 }
