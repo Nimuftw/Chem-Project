@@ -14,12 +14,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
+
 import org.w3c.dom.Text;
-import java.awt.font.TextAttribute;
-import java.text.AttributedString;
 
 
-public class rLawCalc extends Fragment implements View.OnClickListener
+public class rLawCalc extends Fragment
 {
     View rootview;
     Spinner spin;
@@ -27,6 +27,7 @@ public class rLawCalc extends Fragment implements View.OnClickListener
     TextView r1;
     TextView r2;
     TextView r3;
+    TextView r4;
     TextView A;
     TextView B;
     TextView C;
@@ -35,12 +36,19 @@ public class rLawCalc extends Fragment implements View.OnClickListener
     EditText A1;
     EditText A2;
     EditText A3;
+    EditText A4;
     EditText B1;
     EditText B2;
     EditText B3;
+    EditText B4;
     EditText C1;
     EditText C2;
     EditText C3;
+    EditText C4;
+    EditText D1;
+    EditText D2;
+    EditText D3;
+    EditText D4;
     Button GO;
     double concA1;
     double concA2;
@@ -51,11 +59,18 @@ public class rLawCalc extends Fragment implements View.OnClickListener
     double concC1;
     double concC2;
     double concC3;
-    String resp;
+    double rateA;
+    double rateB;
+    double rateC;
+    double concA;
+    double concB;
+    double concC;
     double expA;
     double expB;
     double expC;
     boolean onClick = false;
+    String resp;
+    String spinner;
     ArrayAdapter<CharSequence> choices;
     @Nullable
     @Override
@@ -70,20 +85,57 @@ public class rLawCalc extends Fragment implements View.OnClickListener
         A2.setVisibility(View.GONE);
         A3 = (EditText) rootview.findViewById(R.id.A3);
         A3.setVisibility(View.GONE);
+        A4 = (EditText) rootview.findViewById(R.id.A4);
+        A4.setVisibility(View.GONE);
         B1 = (EditText) rootview.findViewById(R.id.B1);
         B1.setVisibility(View.GONE);
         B2 = (EditText) rootview.findViewById(R.id.B2);
         B2.setVisibility(View.GONE);
         B3 = (EditText) rootview.findViewById(R.id.B3);
         B3.setVisibility(View.GONE);
+        B4 = (EditText) rootview.findViewById(R.id.B4);
+        B4.setVisibility(View.GONE);
         C1 = (EditText) rootview.findViewById(R.id.C1);
         C1.setVisibility(View.GONE);
         C2 = (EditText) rootview.findViewById(R.id.C2);
         C2.setVisibility(View.GONE);
         C3 = (EditText) rootview.findViewById(R.id.C3);
         C3.setVisibility(View.GONE);
+        C4 = (EditText) rootview.findViewById(R.id.C4);
+        C4.setVisibility(View.GONE);
+        D1 = (EditText) rootview.findViewById(R.id.D1);
+        D1.setVisibility(View.GONE);
+        D2 = (EditText) rootview.findViewById(R.id.D2);
+        D2.setVisibility(View.GONE);
+        D3 = (EditText) rootview.findViewById(R.id.D3);
+        D3.setVisibility(View.GONE);
+        D4 = (EditText) rootview.findViewById(R.id.D4);
+        D4.setVisibility(View.GONE);
         //load Button
         GO = (Button) rootview.findViewById(R.id.GO);
+        GO.setOnClickListener(new OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                switch(spinner)
+                {
+                    case "1":
+                        case1Ints();
+                        Answer = (TextView) rootview.findViewById(R.id.Answer);
+                        Answer.setText(resp);
+                        break;
+                    case "2":
+                        case2Ints();
+                        Answer = (TextView) rootview.findViewById(R.id.Answer);
+                        Answer.setText(resp);
+                        break;
+                    case "3":
+                        case3Ints();
+                        Answer = (TextView) rootview.findViewById(R.id.Answer);
+                        Answer.setText(resp);
+                }
+            }
+        });
         GO.setVisibility(View.GONE);
         //load spinner
         spin = (Spinner) rootview.findViewById(R.id.numReactants);
@@ -96,8 +148,8 @@ public class rLawCalc extends Fragment implements View.OnClickListener
             {
                 //Made to Test Spinner
 //                Toast.makeText(getActivity(), parent.getItemAtPosition(position) + " is selected", Toast.LENGTH_LONG).show();
-                String test = "" + parent.getItemAtPosition(position);
-                switch (test)
+                String spinner = "" + parent.getItemAtPosition(position);
+                switch (spinner)
                 {
                     case "1":
                         trial = (TextView) rootview.findViewById(R.id.Trial);
@@ -118,9 +170,9 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         GO.setVisibility(View.VISIBLE);
                         if (onClick)
                         {
-                            Answer = (TextView) rootview.findViewById(R.id.Answer);
-                            Answer.setText("Test");
                             case1Ints();
+                            Answer = (TextView) rootview.findViewById(R.id.Answer);
+                            Answer.setText(R.string.test);
                         }
                         break;
 
@@ -137,13 +189,13 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         B.setText("[B]");
                         A1.setVisibility(View.VISIBLE);
                         A2.setVisibility(View.VISIBLE);
+                        A3.setVisibility(View.VISIBLE);
                         B1.setVisibility(View.VISIBLE);
                         B2.setVisibility(View.VISIBLE);
-                        if (onClick)
-                        {
-                            case2Ints();
-                        }
-                        onClick = false;
+                        B3.setVisibility(View.VISIBLE);
+                        C1.setVisibility(View.VISIBLE);
+                        C2.setVisibility(View.VISIBLE);
+                        C3.setVisibility(View.VISIBLE);
                         break;
 
                     case"3":
@@ -155,6 +207,8 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         r2.setText("2");
                         r3 = (TextView) rootview.findViewById(R.id.tv3);
                         r3.setText("3");
+                        r4 = (TextView) rootview.findViewById(R.id.tv4);
+                        r4.setText("4");
                         A = (TextView) rootview.findViewById(R.id.concA);
                         A.setText("[A]");
                         B = (TextView) rootview.findViewById(R.id.concB);
@@ -164,17 +218,19 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         A1.setVisibility(View.VISIBLE);
                         A2.setVisibility(View.VISIBLE);
                         A3.setVisibility(View.VISIBLE);
+                        A4.setVisibility(View.VISIBLE);
                         B1.setVisibility(View.VISIBLE);
                         B2.setVisibility(View.VISIBLE);
                         B3.setVisibility(View.VISIBLE);
+                        B4.setVisibility(View.VISIBLE);
                         C1.setVisibility(View.VISIBLE);
                         C2.setVisibility(View.VISIBLE);
                         C3.setVisibility(View.VISIBLE);
-                        if(onClick)
-                        {
-                            case3Ints();
-                        }
-                        onClick = false;
+                        C4.setVisibility(View.VISIBLE);
+                        D1.setVisibility(View.VISIBLE);
+                        D2.setVisibility(View.VISIBLE);
+                        D3.setVisibility(View.VISIBLE);
+                        D4.setVisibility(View.VISIBLE);
                         break;
 
                     case"4":
@@ -186,6 +242,8 @@ public class rLawCalc extends Fragment implements View.OnClickListener
                         r2.setText("2");
                         r3 = (TextView) rootview.findViewById(R.id.tv3);
                         r3.setText("3");
+                        r4 = (TextView) rootview.findViewById(R.id.tv4);
+                        r4.setText("4");
                         A = (TextView) rootview.findViewById(R.id.concA);
                         A.setText("[A]");
                         B = (TextView) rootview.findViewById(R.id.concB);
@@ -294,10 +352,6 @@ public class rLawCalc extends Fragment implements View.OnClickListener
         });
         return rootview;
     }
-    public void onClick(View v)
-    {
-        onClick = true;
-    }
     public void case1Ints()
     {
         String A_1 = A1.getText().toString();
@@ -329,7 +383,156 @@ public class rLawCalc extends Fragment implements View.OnClickListener
         String A_2 = A2.getText().toString();
         concA1 = Double.parseDouble(A_1);
         concA2 = Double.parseDouble(A_2);
-        concA3 = Double.parseDouble(A3.getText().toString());
+        concB1 = Double.parseDouble(B1.getText().toString());
+        concB2 = Double.parseDouble(B2.getText().toString());
+        concC1 = Double.parseDouble(C1.getText().toString());
+        concC2 = Double.parseDouble(C2.getText().toString());
+        double rate1 = Double.parseDouble(A3.getText().toString());
+        double rate2 = Double.parseDouble(B3.getText().toString());
+        double rate3 = Double.parseDouble(C3.getText().toString());
+        //get first exp
+            if (concA1 != concB1)
+            {
+                if (concA2 == concB2)
+                {
+                    concA = concB1 / concA1;
+                    rateA = rate2 / rate1;
+                }
+            }
+            else if (concA1 != concC1)
+            {
+                if (concA2 == concC2)
+                {
+                    concA = concC1 / concA1;
+                    rateA = rate3 / rate1;
+                }
+            }
+            else if (concB1 != concC1)
+            {
+                if (concB2 == concC2)
+                {
+                    concA = concC1 / concB1;
+                    rateA = rate3 / rate2;
+                }
+            }
+            if (rateA == concA)
+            {
+                expA = 1;
+            }
+            else if (rateA == (concA * concA))
+            {
+                expA = 2;
+            }
+            else if (rateA == 1)
+            {
+                expA = 0;
+            }
+            if (concA2 != concB2)
+            {
+                if (concA1 == concB1)
+                {
+                    rateB = rate2 / rate1;
+                    concB = concB2/concA2;
+                }
+            }
+            else if (concB2 != concC2)
+            {
+                if (concB1 == concC1)
+                {
+                    rateB = rate3/rate2;
+                    concB = concC2/concB2;
+                }
+            }
+            else if (concC2 != concA2)
+            {
+                if (concC1 == concB1)
+                {
+                    rateB = rate3/rate1;
+                    concB = concC2/concA2;
+                }
+            }
+        //Need to find acceptable range
+            if(concB == rateB)
+            {
+                expB = 1;
+            }
+            else if(rateB == (concB*concB))
+            {
+                expB = 2;
+            }
+            else if (rateB == 1)
+            {
+                expB = 0;
+            }
+        //find second exponent
+        if (concA1 != concB1)
+        {
+            if (concA2 != concB2)
+            {
+                if (expA == 0 || expA == 1 || expA == 2)
+                {
+                    concB = concB2/concA2;
+                    rateB = (rate2/rate1) / ((concB1/concA1)*expA);
+                }
+                else if (expB == 0 || expB == 1 || expB == 2)
+                {
+                    concA = concB1/concA1;
+                    rateA = rate2/rate1;
+                    double temp = (concB2/concA2)*expB;
+                    rateA = rateA/temp;
+                }
+            }
+        }
+        else if (concA1 != concC1)
+        {
+            if (concA2 != concC2)
+            {
+                if (expA == 0 || expA == 1 || expA == 2)
+                {
+                    concB = concC2/concA2;
+                    rateB = (rate2/rate1) / ((concC1/concA1)*expA);
+                }
+                else if (expB == 0 || expB == 1 || expB == 2)
+                {
+                    concA = concC1/concA1;
+                    rateA = (rate2/rate1)/((concC2/concA2)*expB);
+                }
+            }
+        }
+        else if (concB1 != concC1)
+        {
+            if (concB2 != concC2) {
+                if (expA == 0 || expA == 1 || expA == 2) {
+                    concB = concC2 / concB2;
+                    rateB = (rate2 / rate1) / ((concC1 / concB1) * expA);
+                } else if (expB == 0 || expB == 1 || expB == 2) {
+                    concA = concC1 / concB1;
+                    rateA = (rate2 / rate1) / ((concC2 / concB2) * expB);
+                }
+            }
+        }
+        // Print Solution
+        if((expA == 0 || expA == 1 || expA == 2) && (expB == 0 || expB == 1 || expB == 2))
+        {
+            resp = "rate = k[A]" + expA + "[B]" + expB;
+            resp = resp.replaceAll("2", "²");
+            resp = resp.replaceAll("1", "");
+            if (expA == 0)
+            {
+                resp = "rate = k[B]" + expB;
+                resp = resp.replaceAll("2", "²");
+                if (expB == 0)
+                {
+                    resp = "rate = k";
+                }
+            }
+            if(expB == 0)
+            {
+                resp = "rate = k[A]" + expB;
+                resp = resp.replaceAll("2", "²");
+            }
+
+        }
     }
     public void case3Ints()
     {
@@ -342,15 +545,16 @@ public class rLawCalc extends Fragment implements View.OnClickListener
         String C_1 = C1.getText().toString();
         String C_2 = C2.getText().toString();
         String C_3 = C3.getText().toString();
-        concA1 = Integer.parseInt(A_1);
-        concA2 = Integer.parseInt(A_2);
-        concA3 = Integer.parseInt(A_3);
-        concB1 = Integer.parseInt(B_1);
-        concB2 = Integer.parseInt(B_2);
-        concB3 = Integer.parseInt(B_3);
-        concC1 = Integer.parseInt(C_1);
-        concC2 = Integer.parseInt(C_2);
-        concC3 = Integer.parseInt(C_3);
+        concA1 = Double.parseDouble(A_1);
+        concA2 = Double.parseDouble(A_2);
+        concA3 = Double.parseDouble(A_3);
+        concB1 = Double.parseDouble(B_1);
+        concB2 = Double.parseDouble(B_2);
+        concB3 = Double.parseDouble(B_3);
+        concC1 = Double.parseDouble(C_1);
+        concC2 = Double.parseDouble(C_2);
+        concC3 = Double.parseDouble(C_3);
+
     }
 
 }

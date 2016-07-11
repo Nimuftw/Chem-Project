@@ -108,6 +108,7 @@ android:fillViewport="true">
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/tv1"
             android:textSize="18sp"
+            android:layout_column="2"
             />
 
         <EditText
@@ -130,6 +131,11 @@ android:fillViewport="true">
                     android:id="@+id/A3"
                     android:inputType="text"
             android:layout_column="8" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/A4" />
     </TableRow>
 
     <!--android:layout_alignBaseline="@+id/concC"-->
@@ -157,6 +163,7 @@ android:fillViewport="true">
                     android:id="@+id/tv2"
                     android:textSize="18sp"
                     android:layout_marginTop="18dp"
+                    android:layout_column="2"
                     />
 
         <EditText
@@ -179,6 +186,11 @@ android:fillViewport="true">
                     android:id="@+id/B3"
                     android:inputType="text"
             android:layout_column="8" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/B4" />
 
     </TableRow>
 
@@ -211,7 +223,7 @@ android:fillViewport="true">
             android:layout_below="@+id/tv2"
             android:layout_alignLeft="@+id/tv2"
             android:layout_alignStart="@+id/tv2"
-            android:layout_column="10" />
+            android:layout_column="2" />
 
         <EditText
                     android:layout_width="wrap_content"
@@ -221,9 +233,52 @@ android:fillViewport="true">
                     android:layout_alignParentStart="true"
                     android:inputType="text"
                     android:layout_column="8"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/C4" />
+
     </TableRow>
 
     <!--android:layout_column="4"-->
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/D1"
+            android:inputType="text"
+            android:layout_column="4"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/D2"
+            android:inputType="text"
+            android:layout_column="6"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/D3"
+            android:inputType="text"
+            android:layout_column="8"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv4"
+            android:layout_column="2"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/D4" />
+    </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
