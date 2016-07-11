@@ -59,6 +59,9 @@ public class rLawCalc extends Fragment
     double concC1;
     double concC2;
     double concC3;
+    double concD1;
+    double concD2;
+    double concD3;
     double rateA;
     double rateB;
     double rateC;
@@ -449,7 +452,7 @@ public class rLawCalc extends Fragment
             }
             else if (concC2 != concA2)
             {
-                if (concC1 == concB1)
+                if (concC1 == concA1)
                 {
                     rateB = rate3/rate1;
                     concB = concC2/concA2;
@@ -540,25 +543,201 @@ public class rLawCalc extends Fragment
     }
     public void case3Ints()
     {
-        String A_1 = A1.getText().toString();
-        String A_2 = A2.getText().toString();
-        String A_3 = A3.getText().toString();
-        String B_1 = B1.getText().toString();
-        String B_2 = B2.getText().toString();
-        String B_3 = B3.getText().toString();
-        String C_1 = C1.getText().toString();
-        String C_2 = C2.getText().toString();
-        String C_3 = C3.getText().toString();
-        concA1 = Double.parseDouble(A_1);
-        concA2 = Double.parseDouble(A_2);
-        concA3 = Double.parseDouble(A_3);
-        concB1 = Double.parseDouble(B_1);
-        concB2 = Double.parseDouble(B_2);
-        concB3 = Double.parseDouble(B_3);
-        concC1 = Double.parseDouble(C_1);
-        concC2 = Double.parseDouble(C_2);
-        concC3 = Double.parseDouble(C_3);
+        concA1 = Double.parseDouble(A1.getText().toString());
+        concA2 = Double.parseDouble(A2.getText().toString());
+        concA3 = Double.parseDouble(A3.getText().toString());
+        concB1 = Double.parseDouble(B1.getText().toString());
+        concB2 = Double.parseDouble(B2.getText().toString());
+        concB3 = Double.parseDouble(B3.getText().toString());
+        concC1 = Double.parseDouble(C1.getText().toString());
+        concC2 = Double.parseDouble(C2.getText().toString());
+        concC3 = Double.parseDouble(C3.getText().toString());
 
+        double rate1 = Double.parseDouble(A4.getText().toString());
+        double rate2 = Double.parseDouble(B4.getText().toString());
+        double rate3 = Double.parseDouble(C4.getText().toString());
+        double rate4 = Double.parseDouble(D4.getText().toString());
+        //get first exp
+        if (concA1 != concB1)
+        {
+            if (concA2 == concB2 && concA3 == concB3)
+            {
+                concA = concB1 / concA1;
+                rateA = rate2 / rate1;
+            }
+        }
+        else if (concA1 != concC1)
+        {
+            if (concA2 == concC2 && concA3 == concC3)
+            {
+                concA = concC1 / concA1;
+                rateA = rate3 / rate1;
+            }
+        }
+        else if (concB1 != concC1)
+        {
+            if (concB2 == concC2 && concB3 == concC3)
+            {
+                concA = concC1 / concB1;
+                rateA = rate3 / rate2;
+            }
+        }
+        else if (concA1 != concD1)
+        {
+            if (concA2 == concD2 && concA3 == concD3)
+            {
+                concA = concC1 / concB1;
+                rateA = rate4 / rate1;
+            }
+        }
+        else if (concB1 != concD1)
+        {
+            if (concB2 == concD2 && concB3 == concD3)
+            {
+                concA = concD1 / concB1;
+                rateA = rate4 / rate2;
+            }
+        }
+        else if (concD1 != concC1)
+        {
+            if (concD2 == concC2 && concD3 == concC3)
+            {
+                concA = concD1 / concC1;
+                rateA = rate4 / rate3;
+            }
+        }
+        if (rateA == concA)
+        {
+            expA = 1;
+        }
+        else if (rateA == (concA * concA))
+        {
+            expA = 2;
+        }
+        else if (rateA == 1)
+        {
+            expA = 0;
+        }
+        if (concA2 != concB2)
+        {
+            if (concA1 == concB1 && concA3 == concB3)
+            {
+                rateB = rate2 / rate1;
+                concB = concB2/concA2;
+            }
+        }
+        else if (concB2 != concC2 )
+        {
+            if (concB1 == concC1 && concB3 == concC3)
+            {
+                rateB = rate3/rate2;
+                concB = concC2/concB2;
+            }
+        }
+        else if (concC2 != concA2)
+        {
+            if (concC1 == concA1 && concC3 == concA3)
+            {
+                rateB = rate3/rate1;
+                concB = concC2/concA2;
+            }
+        }
+        else if (concD2 != concA2)
+        {
+            if (concD1 == concA1 && concD3 == concA3)
+            {
+                rateB = rate4/rate1;
+                concB = concD2/concA2;
+            }
+        }
+        if (concD2 != concB2)
+        {
+            if (concD1 == concB1 && concD3 == concB3)
+            {
+                rateB = rate4 / rate2;
+                concB = concD2/concB2;
+            }
+        }
+        else if (concC2 != concD2)
+        {
+            if (concD1 == concC1 && concD3 == concC3)
+            {
+                rateB = rate4 / rate3;
+                concB = concD2/concC2;
+            }
+        }
+
+        if (rateB == 1)
+        {
+            expB = 0;
+        }
+        else if(rateB == concB)
+        {
+            expB = 1;
+        }
+        else if (rateB == concB*concB)
+        {
+            expB = 2;
+        }
+        if (concA3 != concB3)
+        {
+            if (concA1 == concB1 && concA2 == concB2)
+            {
+                rateC = rate2 / rate1;
+                concC = concB2/concA2;
+            }
+        }
+        else if (concB3 != concC3)
+        {
+            if (concB1 == concC1 && concB2 == concC2)
+            {
+                rateC = rate3/rate2;
+                concC = concC2/concB2;
+            }
+        }
+        else if (concC3 != concA3)
+        {
+            if (concC1 == concA1 && concC2 == concA2)
+            {
+                rateC = rate3/rate1;
+                concC = concC2/concA2;
+            }
+        }
+        if (concD3 != concB3)
+        {
+            if (concD1 == concB1 && concD2 == concB2)
+            {
+                rateC = rate4 / rate2;
+                concC = concD2/concB2;
+            }
+        }
+        if (concD3 != concA3)
+        {
+            if (concA1 == concD1 && concA2 == concD2)
+            {
+                rateC = rate4 / rate1;
+                concC = concD2/concA2;
+            }
+        }
+        if (concD3 != concC3)
+        {
+            if (concD1 == concC1 && concD2 == concC2)
+            {
+                rateC = rate4 / rate3;
+                concC = concD2/concC2;
+            }
+        }
+        if (rateC == 1)
+        {
+            expC = 0;
+        }
+        else if(rateC == concC)
+        {
+            expC = 1;
+        }
+        else if (rateC == concC*concC)
+        {
+            expC = 2;
+        }
     }
-
 }
