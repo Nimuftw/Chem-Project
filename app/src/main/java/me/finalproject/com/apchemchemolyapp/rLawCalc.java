@@ -187,6 +187,8 @@ public class rLawCalc extends Fragment
                         A.setText("[A]");
                         B = (TextView) rootview.findViewById(R.id.concB);
                         B.setText("[B]");
+                        C = (TextView) rootview.findViewById(R.id.concC);
+                        C.setText(R.string.rxnrate);
                         A1.setVisibility(View.VISIBLE);
                         A2.setVisibility(View.VISIBLE);
                         A3.setVisibility(View.VISIBLE);
@@ -215,6 +217,8 @@ public class rLawCalc extends Fragment
                         B.setText("[B]");
                         C = (TextView) rootview.findViewById(R.id.concC);
                         C.setText("[C]");
+                        D = (TextView) rootview.findViewById(R.id.concD);
+                        D.setText(R.string.rxnrate);
                         A1.setVisibility(View.VISIBLE);
                         A2.setVisibility(View.VISIBLE);
                         A3.setVisibility(View.VISIBLE);
