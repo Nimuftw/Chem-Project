@@ -40,7 +40,7 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
     EditText reactants;
     EditText products;
     TextView beq;
-    Button go;
+
     String balancedEQ;
     int temp;
     @Nullable
@@ -50,8 +50,8 @@ public class stoich_fragment extends Fragment implements View.OnClickListener
         rootview = inflater.inflate(R.layout.stoich_layout, container, false);
         reactants = (EditText) rootview.findViewById(R.id.reactants);
         products = (EditText) rootview.findViewById(R.id.products);
-        go = (Button) rootview.findViewById(R.id.button);
-        go.setOnClickListener(this);
+        Button go = (Button) rootview.findViewById(R.id.button);
+//        go.setOnClickListener(this);
         return rootview;
     }
     public void onClick(View v)

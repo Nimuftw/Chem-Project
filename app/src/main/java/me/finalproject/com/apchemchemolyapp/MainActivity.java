@@ -2,6 +2,7 @@ package me.finalproject.com.apchemchemolyapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,11 +24,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.graphics.*;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
@@ -209,6 +205,36 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         }
         else if(id == R.id.rate_law)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new rLawCalc())
+                    .commit();
+        }
+        else if(id == R.id.nav_BEQ)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new stoich_fragment())
+                    .commit();
+        }
+        else if(id == R.id.nav_sol_rule)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new rLawCalc())
+                    .commit();
+        }
+        else if(id == R.id.nav_strong_acids)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new rLawCalc())
+                    .commit();
+        }
+        else if(id == R.id.nav_ox_rule)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new rLawCalc())
+                    .commit();
+        }
+        else if(id == R.id.nav_red_potentials)
         {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new rLawCalc())
