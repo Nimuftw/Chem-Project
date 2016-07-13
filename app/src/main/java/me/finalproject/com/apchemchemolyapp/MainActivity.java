@@ -219,25 +219,25 @@ public class MainActivity extends AppCompatActivity
         else if(id == R.id.nav_sol_rule)
         {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new rLawCalc())
+                    .replace(R.id.content_frame, new solrules_fragment())
                     .commit();
         }
         else if(id == R.id.nav_strong_acids)
         {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new rLawCalc())
+                    .replace(R.id.content_frame, new acid_baselist())
                     .commit();
         }
         else if(id == R.id.nav_ox_rule)
         {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new rLawCalc())
+                    .replace(R.id.content_frame, new oxstaterules())
                     .commit();
         }
         else if(id == R.id.nav_red_potentials)
         {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new rLawCalc())
+                    .replace(R.id.content_frame, new redpotentials())
                     .commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
