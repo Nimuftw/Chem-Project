@@ -507,6 +507,7 @@ public class rLawCalc extends Fragment
             }
 
         }
+        setResp(2);
     }
     public void case3Ints()
     {
@@ -721,6 +722,7 @@ public class rLawCalc extends Fragment
                     }
                 }
             }
+            setResp(3);
         }
         //get first exp
 //        if (concA1 != concB1)
@@ -1134,35 +1136,21 @@ public class rLawCalc extends Fragment
         else if (num == 2)
         {
             resp = "rate = k[A]" + expA + "[B]" + expB;
-//            if (expA == 0 && expB == 0)
-//            {
-//                resp = "rate = k";
-//            }
-//            else if (expA == 0)
-//            {
-//                resp = "rate = k[B]" + expB;
-//            }
-//            else if (expB == 0)
-//            {
-//                resp = "rate = k[A]" + expA;
-//            }
         }
         else if (num == 3)
         {
             resp = "rate = k[A]" +expA+ "[B]" + expB + "[C]" +expC;
-//            if (expA == 0 && expB == 0 && expC == 0)
-//            {
-//                resp = "k";
-//            }
-//            else if (expA == 0 && expB == 0)
-//            {
-//
-//            }
         }
-        if (resp.contains("0"))
+        while (resp.contains("0"))
         {
+            if (resp.indexOf("0") == resp.length()-1)
+            {
+                resp = resp.substring(0, resp.indexOf("0")-3);
+            }
             resp = resp.substring(0,resp.indexOf("0")-3) + resp.substring(resp.indexOf("0")+1, resp.length());
         }
+        resp = resp.replaceAll("1", "");
+        resp = resp.replaceAll("2", "²");
     }
     public void getExp(double rate, double conc, int exp)
     {
