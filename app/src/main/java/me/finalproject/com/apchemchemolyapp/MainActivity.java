@@ -1,6 +1,5 @@
 package me.finalproject.com.apchemchemolyapp;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
