@@ -72,7 +72,7 @@ public class rLawCalc extends Fragment
     int expC;
     boolean onClick = false;
     String resp;
-    String spinner;
+    String spinner = "";
     ArrayAdapter<CharSequence> choices;
     @Nullable
     @Override
@@ -113,32 +113,6 @@ public class rLawCalc extends Fragment
         D3.setVisibility(View.GONE);
         D4 = (EditText) rootview.findViewById(R.id.D4);
         D4.setVisibility(View.GONE);
-        //load Button
-        GO = (Button) rootview.findViewById(R.id.GO);
-        GO.setOnClickListener(new OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                switch(spinner)
-                {
-                    case "1":
-                        case1Ints();
-                        Answer = (TextView) rootview.findViewById(R.id.Answer);
-                        Answer.setText(resp);
-                        break;
-                    case "2":
-                        case2Ints();
-                        Answer = (TextView) rootview.findViewById(R.id.Answer);
-                        Answer.setText(resp);
-                        break;
-                    case "3":
-                        case3Ints();
-                        Answer = (TextView) rootview.findViewById(R.id.Answer);
-                        Answer.setText(resp);
-                }
-            }
-        });
-        GO.setVisibility(View.GONE);
         //load spinner
         spin = (Spinner) rootview.findViewById(R.id.numReactants);
         choices = ArrayAdapter.createFromResource( getActivity(), R.array.numOfReactants, android.R.layout.simple_spinner_item);
@@ -150,7 +124,7 @@ public class rLawCalc extends Fragment
             {
                 //Made to Test Spinner
 //                Toast.makeText(getActivity(), parent.getItemAtPosition(position) + " is selected", Toast.LENGTH_LONG).show();
-                String spinner = "" + parent.getItemAtPosition(position);
+                spinner = "" + parent.getItemAtPosition(position);
                 switch (spinner)
                 {
                     case "1":
@@ -235,105 +209,50 @@ public class rLawCalc extends Fragment
                         GO.setVisibility(View.VISIBLE);
                         break;
                 }
-//                while(!onClick)
-//                {
-//                    if (test.equals("1"))
-//                    {
-//                        trial = (TextView) rootview.findViewById(R.id.Trial);
-//                        trial.setText(R.string.t1);
-//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
-//                        r1.setText("1");
-//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
-//                        r2.setText("2");
-//                        A = (TextView) rootview.findViewById(R.id.concA);
-//                        A.setText("   [A]");
-//                        B = (TextView) rootview.findViewById(R.id.concB);
-//                        B.setText(R.string.rxnrate);
-//                        B.setTextSize(15);
-//                        A1.setVisibility(View.VISIBLE);
-//                        A2.setVisibility(View.VISIBLE);
-//                        B1.setVisibility(View.VISIBLE);
-//                        B2.setVisibility(View.VISIBLE);
-//                        GO.setVisibility(View.VISIBLE);
-//                    }
-//                    else if (test.equals("2"))
-//                    {
-//                        trial = (TextView) rootview.findViewById(R.id.Trial);
-//                        trial.setText(R.string.t1);
-//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
-//                        r1.setText("1");
-//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
-//                        r2.setText("2");
-//                        A = (TextView) rootview.findViewById(R.id.concA);
-//                        A.setText("[A]");
-//                        B = (TextView) rootview.findViewById(R.id.concB);
-//                        B.setText("[B]");
-//                        A1.setVisibility(View.VISIBLE);
-//                        A2.setVisibility(View.VISIBLE);
-//                        B1.setVisibility(View.VISIBLE);
-//                        B2.setVisibility(View.VISIBLE);
-//                    }
-//                    else if (test.equals("3"))
-//                    {
-//                        trial = (TextView) rootview.findViewById(R.id.Trial);
-//                        trial.setText(R.string.t1);
-//                        r1 = (TextView) rootview.findViewById(R.id.tv1);
-//                        r1.setText("1");
-//                        r2 = (TextView) rootview.findViewById(R.id.tv2);
-//                        r2.setText("2");
-//                        r3 = (TextView) rootview.findViewById(R.id.tv3);
-//                        r3.setText("3");
-//                        A = (TextView) rootview.findViewById(R.id.concA);
-//                        A.setText("[A]");
-//                        B = (TextView) rootview.findViewById(R.id.concB);
-//                        B.setText("[B]");
-//                        C = (TextView) rootview.findViewById(R.id.concC);
-//                        C.setText("[C]");
-//                        A1.setVisibility(View.VISIBLE);
-//                        A2.setVisibility(View.VISIBLE);
-//                        A3.setVisibility(View.VISIBLE);
-//                        B1.setVisibility(View.VISIBLE);
-//                        B2.setVisibility(View.VISIBLE);
-//                        B3.setVisibility(View.VISIBLE);
-//                        C1.setVisibility(View.VISIBLE);
-//                        C2.setVisibility(View.VISIBLE);
-//                        C3.setVisibility(View.VISIBLE);
-//                    }
-//                }
-//                if (test.equals("1"))
-//                {
-//                    case1Ints();
-//                    Answer = (TextView) rootview.findViewById(R.id.Answer);
-//                    Answer.setText(resp);
-//                }
-//                else if (test.equals("2"))
-//                {
-//                    case2Ints();
-//                    Answer = (TextView) rootview.findViewById(R.id.Answer);
-//                    Answer.setText(resp);
-//                }
-//                else if (test.equals("3"))
-//                {
-//                    case3Ints();
-//                    Answer = (TextView) rootview.findViewById(R.id.Answer);
-//                    Answer.setText(resp);
-//                }
             }
             public void onNothingSelected(AdapterView<?> parent)
             {
                 Toast.makeText(getActivity(), "Please select an Option", Toast.LENGTH_LONG).show();
             }
         });
+        //load Button
+        GO = (Button) rootview.findViewById(R.id.GO);
+        GO.setOnClickListener(new OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                switch(spinner)
+                {
+                    case "1":
+                        case1Ints();
+                        Answer = (TextView) rootview.findViewById(R.id.Answer);
+                        Answer.setText("testing");
+                        break;
+                    case "2":
+                        case2Ints();
+                        Answer = (TextView) rootview.findViewById(R.id.Answer);
+                        Answer.setText(resp);
+                        break;
+                    case "3":
+                        case3Ints();
+                        Answer = (TextView) rootview.findViewById(R.id.Answer);
+                        Answer.setText(resp);
+                }
+            }
+        });
+        GO.setVisibility(View.GONE);
         return rootview;
     }
     public void case1Ints()
     {
         String A_1 = A1.getText().toString();
+        A_1.replaceAll("\\s+","");
         String A_2 = B1.getText().toString();
+        A_2.replaceAll("\\s+","");
         concA1 = Double.parseDouble(A_1);
         concA2 = Double.parseDouble(A_2);
-        double rate1 = Double.parseDouble(A3.getText().toString());
-        double rate2 = Double.parseDouble(B3.getText().toString());
+        double rate1 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
+        double rate2 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
         double temp = concA2/concA1;
         double rate_change = rate2/rate1;
         if(rate_change == temp)
@@ -353,17 +272,17 @@ public class rLawCalc extends Fragment
     }
     public void case2Ints()
     {
-        String A_1 = A1.getText().toString();
-        String A_2 = A2.getText().toString();
+        String A_1 = A1.getText().toString().replaceAll("\\s+","");
+        String A_2 = A2.getText().toString().replaceAll("\\s+","");
         concA1 = Double.parseDouble(A_1);
         concA2 = Double.parseDouble(A_2);
-        concB1 = Double.parseDouble(B1.getText().toString());
-        concB2 = Double.parseDouble(B2.getText().toString());
-        concC1 = Double.parseDouble(C1.getText().toString());
-        concC2 = Double.parseDouble(C2.getText().toString());
-        double rate1 = Double.parseDouble(A3.getText().toString());
-        double rate2 = Double.parseDouble(B3.getText().toString());
-        double rate3 = Double.parseDouble(C3.getText().toString());
+        concB1 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
+        concB2 = Double.parseDouble(B2.getText().toString().replaceAll("\\s+",""));
+        concC1 = Double.parseDouble(C1.getText().toString().replaceAll("\\s+",""));
+        concC2 = Double.parseDouble(C2.getText().toString().replaceAll("\\s+",""));
+        double rate1 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
+        double rate2 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
+        double rate3 = Double.parseDouble(C3.getText().toString().replaceAll("\\s+",""));
         //get first exp
             if (concA1 != concB1)
             {
@@ -511,23 +430,22 @@ public class rLawCalc extends Fragment
     }
     public void case3Ints()
     {
-        concA1 = Double.parseDouble(A1.getText().toString());
-        concA2 = Double.parseDouble(A2.getText().toString());
-        concA3 = Double.parseDouble(A3.getText().toString());
-        concB1 = Double.parseDouble(B1.getText().toString());
-        concB2 = Double.parseDouble(B2.getText().toString());
-        concB3 = Double.parseDouble(B3.getText().toString());
-        concC1 = Double.parseDouble(C1.getText().toString());
-        concC2 = Double.parseDouble(C2.getText().toString());
-        concC3 = Double.parseDouble(C3.getText().toString());
-        concD1 = Double.parseDouble(D1.getText().toString());
-        concD2 = Double.parseDouble(D2.getText().toString());
-        concD3 = Double.parseDouble(D3.getText().toString());
-        double rate1 = Double.parseDouble(A4.getText().toString());
-        double rate2 = Double.parseDouble(B4.getText().toString());
-        double rate3 = Double.parseDouble(C4.getText().toString());
-        double rate4 = Double.parseDouble(D4.getText().toString());
-
+        concA1 = Double.parseDouble(A1.getText().toString().replaceAll("\\s+",""));
+        concA2 = Double.parseDouble(A2.getText().toString().replaceAll("\\s+",""));
+        concA3 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
+        concB1 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
+        concB2 = Double.parseDouble(B2.getText().toString().replaceAll("\\s+",""));
+        concB3 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
+        concC1 = Double.parseDouble(C1.getText().toString().replaceAll("\\s+",""));
+        concC2 = Double.parseDouble(C2.getText().toString().replaceAll("\\s+",""));
+        concC3 = Double.parseDouble(C3.getText().toString().replaceAll("\\s+",""));
+        concD1 = Double.parseDouble(D1.getText().toString().replaceAll("\\s+",""));
+        concD2 = Double.parseDouble(D2.getText().toString().replaceAll("\\s+",""));
+        concD3 = Double.parseDouble(D3.getText().toString().replaceAll("\\s+",""));
+        double rate1 = Double.parseDouble(A4.getText().toString().replaceAll("\\s+",""));
+        double rate2 = Double.parseDouble(B4.getText().toString().replaceAll("\\s+",""));
+        double rate3 = Double.parseDouble(C4.getText().toString().replaceAll("\\s+",""));
+        double rate4 = Double.parseDouble(D4.getText().toString().replaceAll("\\s+",""));
         double[] ratearr = new double[4];
         ratearr[0] = rate1;
         ratearr[1] = rate2;
@@ -546,7 +464,6 @@ public class rLawCalc extends Fragment
         concarray[3][0] = concD1;
         concarray[3][1] = concD2;
         concarray[3][2] = concD3;
-
         boolean A = false;
         boolean B = false;
         boolean C = false;
@@ -724,7 +641,57 @@ public class rLawCalc extends Fragment
             }
             setResp(3);
         }
-        //get first exp
+
+    }
+    public void setResp(int num)
+    {
+        if (num == 1)
+        {
+            resp = "rate = k[A]"+expA;
+            if (expA == 0)
+            {
+                resp = "rate = k";
+            }
+        }
+        else if (num == 2)
+        {
+            resp = "rate = k[A]" + expA + "[B]" + expB;
+        }
+        else if (num == 3)
+        {
+            resp = "rate = k[A]" +expA+ "[B]" + expB + "[C]" +expC;
+        }
+        while (resp.contains("0"))
+        {
+            if (resp.indexOf("0") == resp.length()-1)
+            {
+                resp = resp.substring(0, resp.indexOf("0")-3);
+            }
+            resp = resp.substring(0,resp.indexOf("0")-3) + resp.substring(resp.indexOf("0")+1, resp.length());
+        }
+        resp = resp.replaceAll("1", "");
+        resp = resp.replaceAll("2", "²");
+    }
+    public void getExp(double rate, double conc, int exp)
+    {
+        if (rate == 1)
+        {
+            exp = 0;
+        }
+        else if (rate == conc)
+        {
+            exp = 1;
+        }
+        else if (rate == conc*conc)
+        {
+            exp = 2;
+        }
+        else if (rate == conc*conc*conc)
+        {
+            exp = 3;
+        }
+    }
+    //get first exp
 //        if (concA1 != concB1)
 //        {
 //            if (concA2 == concB2 && concA3 == concB3)
@@ -906,7 +873,7 @@ public class rLawCalc extends Fragment
 //        {
 //            expC = 2;
 //        }
-        //find second element
+    //find second element
 //        if (expA == 0 || expA == 1 || expA == 2)
 //        {
 //            if (expB == 0 || expB == 1 || expB == 2)
@@ -1122,53 +1089,4 @@ public class rLawCalc extends Fragment
 //                }
 //            }
 //        }
-    }
-    public void setResp(int num)
-    {
-        if (num == 1)
-        {
-            resp = "rate = k[A]"+expA;
-            if (expA == 0)
-            {
-                resp = "rate = k";
-            }
-        }
-        else if (num == 2)
-        {
-            resp = "rate = k[A]" + expA + "[B]" + expB;
-        }
-        else if (num == 3)
-        {
-            resp = "rate = k[A]" +expA+ "[B]" + expB + "[C]" +expC;
-        }
-        while (resp.contains("0"))
-        {
-            if (resp.indexOf("0") == resp.length()-1)
-            {
-                resp = resp.substring(0, resp.indexOf("0")-3);
-            }
-            resp = resp.substring(0,resp.indexOf("0")-3) + resp.substring(resp.indexOf("0")+1, resp.length());
-        }
-        resp = resp.replaceAll("1", "");
-        resp = resp.replaceAll("2", "²");
-    }
-    public void getExp(double rate, double conc, int exp)
-    {
-        if (rate == 1)
-        {
-            exp = 0;
-        }
-        else if (rate == conc)
-        {
-            exp = 1;
-        }
-        else if (rate == conc*conc)
-        {
-            exp = 2;
-        }
-        else if (rate == conc*conc*conc)
-        {
-            exp = 3;
-        }
-    }
 }

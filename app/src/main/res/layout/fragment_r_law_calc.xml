@@ -198,6 +198,17 @@ android:fillViewport="true">
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/tv3"
+            android:textSize="18sp"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/tv2"
+            android:layout_alignLeft="@+id/tv2"
+            android:layout_alignStart="@+id/tv2"
+            android:layout_column="2" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -213,17 +224,7 @@ android:fillViewport="true">
             android:inputType="text"
             android:layout_column="6" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/tv3"
-            android:textSize="18sp"
-            android:layout_marginTop="18dp"
-            android:layout_below="@+id/tv2"
-            android:layout_alignLeft="@+id/tv2"
-            android:layout_alignStart="@+id/tv2"
-            android:layout_column="2" />
+
 
         <EditText
                     android:layout_width="wrap_content"
