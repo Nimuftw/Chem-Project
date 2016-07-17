@@ -115,27 +115,28 @@ android:fillViewport="true">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/A1"
-                    android:inputType="text"
+                    android:inputType="number"
             android:layout_column="4" />
 
         <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/A2"
-                    android:inputType="text"
+                    android:inputType="number"
             android:layout_column="6" />
 
         <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/A3"
-                    android:inputType="text"
+                    android:inputType="number"
             android:layout_column="8" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/A4" />
+            android:id="@+id/A4"
+            android:inputType="number"/>
     </TableRow>
 
     <!--android:layout_alignBaseline="@+id/concC"-->
@@ -162,7 +163,7 @@ android:fillViewport="true">
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/tv2"
                     android:textSize="18sp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="8dp"
                     android:layout_column="2"
                     />
 
@@ -170,27 +171,28 @@ android:fillViewport="true">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/B1"
-                    android:inputType="text"
+                    android:inputType="number"
             android:layout_column="4" />
 
         <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/B2"
-                    android:inputType="text"
+                    android:inputType="number"
             android:layout_column="6" />
 
         <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/B3"
-                    android:inputType="text"
+                    android:inputType="number"
             android:layout_column="8" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/B4" />
+            android:id="@+id/B4"
+            android:inputType="number"/>
 
     </TableRow>
 
@@ -204,7 +206,7 @@ android:fillViewport="true">
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/tv3"
             android:textSize="18sp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@+id/tv2"
             android:layout_alignLeft="@+id/tv2"
             android:layout_alignStart="@+id/tv2"
@@ -214,14 +216,14 @@ android:fillViewport="true">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/C1"
-            android:inputType="text"
+            android:inputType="number"
             android:layout_column="4" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/C2"
-            android:inputType="text"
+            android:inputType="number"
             android:layout_column="6" />
 
 
@@ -232,7 +234,7 @@ android:fillViewport="true">
                     android:id="@+id/C3"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:layout_column="8"/>
 
         <EditText
@@ -251,33 +253,35 @@ android:fillViewport="true">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv4"
-            android:layout_column="2"/>
+            android:layout_column="2"
+            android:layout_marginTop="8dp"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/D1"
-            android:inputType="text"
+            android:inputType="number"
             android:layout_column="4"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/D2"
-            android:inputType="text"
+            android:inputType="number"
             android:layout_column="6"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/D3"
-            android:inputType="text"
+            android:inputType="number"
             android:layout_column="8"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/D4" />
+            android:id="@+id/D4" 
+            android:inputType="number"/>
     </TableRow>
 
     <TableRow

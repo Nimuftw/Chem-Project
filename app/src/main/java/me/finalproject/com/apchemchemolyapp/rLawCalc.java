@@ -49,24 +49,28 @@ public class rLawCalc extends Fragment
     EditText D3;
     EditText D4;
     Button GO;
-    double concA1;
-    double concA2;
-    double concA3;
-    double concB1;
-    double concB2;
-    double concB3;
-    double concC1;
-    double concC2;
-    double concC3;
-    double concD1;
-    double concD2;
-    double concD3;
-    double rateA;
-    double rateB;
-    double rateC;
-    double concA;
-    double concB;
-    double concC;
+    double concA1 = 0;
+    double concA2 = 0;
+    double concA3 = 0;
+    double concB1 = 0;
+    double concB2 = 0;
+    double concB3 = 0;
+    double concC1 = 0;
+    double concC2 = 0;
+    double concC3 = 0;
+    double concD1 = 0;
+    double concD2 = 0;
+    double concD3 = 0;
+    double rateA = 0;
+    double rateB = 0;
+    double rateC = 0;
+    double concA = 0;
+    double concB = 0;
+    double concC = 0;
+    double rate1 = 0;
+    double rate2 = 0;
+    double rate3 = 0;
+    double rate4 = 0;
     int expA;
     int expB;
     int expC;
@@ -226,7 +230,7 @@ public class rLawCalc extends Fragment
                     case "1":
                         case1Ints();
                         Answer = (TextView) rootview.findViewById(R.id.Answer);
-                        Answer.setText("testing");
+                        Answer.setText(resp);
                         break;
                     case "2":
                         case2Ints();
@@ -245,14 +249,28 @@ public class rLawCalc extends Fragment
     }
     public void case1Ints()
     {
-        String A_1 = A1.getText().toString();
-        A_1.replaceAll("\\s+","");
-        String A_2 = B1.getText().toString();
-        A_2.replaceAll("\\s+","");
-        concA1 = Double.parseDouble(A_1);
-        concA2 = Double.parseDouble(A_2);
-        double rate1 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
-        double rate2 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
+        try
+        {
+            concA1=Double.parseDouble(A1.getText().toString().replaceAll("\\s+",""));
+            concA2 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
+            rate1 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
+            rate2 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
+        }
+        catch(NumberFormatException n)
+        {
+            if (A1.getText().toString().contains(" ") || B1.getText().toString().contains(" ") || A3.getText().toString().contains(" ") || B3.getText().toString().contains(" "))
+            {
+                Toast.makeText(getActivity(), "Please get rid of all spaces", Toast.LENGTH_LONG).show();
+            }
+            else if (A1.getText().toString().equals("") || B1.getText().toString().equals("") || A3.getText().toString().equals("") || B3.getText().toString().equals(""))
+            {
+                Toast.makeText(getActivity(), "Please fill all Text Boxes", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getActivity(), "Please enter numbers only", Toast.LENGTH_LONG).show();
+            }
+        }
         double temp = concA2/concA1;
         double rate_change = rate2/rate1;
         if(rate_change == temp)
@@ -274,15 +292,34 @@ public class rLawCalc extends Fragment
     {
         String A_1 = A1.getText().toString().replaceAll("\\s+","");
         String A_2 = A2.getText().toString().replaceAll("\\s+","");
-        concA1 = Double.parseDouble(A_1);
-        concA2 = Double.parseDouble(A_2);
-        concB1 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
-        concB2 = Double.parseDouble(B2.getText().toString().replaceAll("\\s+",""));
-        concC1 = Double.parseDouble(C1.getText().toString().replaceAll("\\s+",""));
-        concC2 = Double.parseDouble(C2.getText().toString().replaceAll("\\s+",""));
-        double rate1 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
-        double rate2 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
-        double rate3 = Double.parseDouble(C3.getText().toString().replaceAll("\\s+",""));
+        try
+        {
+            concA1 = Double.parseDouble(A_1);
+            concA2 = Double.parseDouble(A_2);
+            concB1 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
+            concB2 = Double.parseDouble(B2.getText().toString().replaceAll("\\s+",""));
+            concC1 = Double.parseDouble(C1.getText().toString().replaceAll("\\s+",""));
+            concC2 = Double.parseDouble(C2.getText().toString().replaceAll("\\s+",""));
+            rate1 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
+            rate2 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
+            rate3 = Double.parseDouble(C3.getText().toString().replaceAll("\\s+",""));
+        }
+        catch (NumberFormatException n)
+        {
+            if (A_1.contains(" ") || A_2.contains(" ") || B1.getText().toString().contains(" ") ||B2.getText().toString().contains(" ") ||C1.getText().toString().contains(" ") ||C2.getText().toString().contains(" ") ||A3.getText().toString().contains(" ") ||B3.getText().toString().contains(" ") ||C3.getText().toString().contains(" "))
+            {
+                Toast.makeText(getActivity(), "Please get rid of all Spaces", Toast.LENGTH_LONG).show();
+            }
+            else if (A_1.equals("") || A_2.equals("") || B1.getText().toString().equals("") ||B2.getText().toString().equals("") ||C1.getText().toString().equals("") ||C2.getText().toString().equals("") ||A3.getText().toString().equals("") ||B3.getText().toString().equals("") ||C3.getText().toString().equals(""))
+            {
+                Toast.makeText(getActivity(), "Please fill all Text Boxes", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getActivity(), "YOu did not enter a valid number. Please try again", Toast.LENGTH_LONG).show();
+            }
+        }
+
         //get first exp
             if (concA1 != concB1)
             {
@@ -430,22 +467,36 @@ public class rLawCalc extends Fragment
     }
     public void case3Ints()
     {
-        concA1 = Double.parseDouble(A1.getText().toString().replaceAll("\\s+",""));
-        concA2 = Double.parseDouble(A2.getText().toString().replaceAll("\\s+",""));
-        concA3 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
-        concB1 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
-        concB2 = Double.parseDouble(B2.getText().toString().replaceAll("\\s+",""));
-        concB3 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
-        concC1 = Double.parseDouble(C1.getText().toString().replaceAll("\\s+",""));
-        concC2 = Double.parseDouble(C2.getText().toString().replaceAll("\\s+",""));
-        concC3 = Double.parseDouble(C3.getText().toString().replaceAll("\\s+",""));
-        concD1 = Double.parseDouble(D1.getText().toString().replaceAll("\\s+",""));
-        concD2 = Double.parseDouble(D2.getText().toString().replaceAll("\\s+",""));
-        concD3 = Double.parseDouble(D3.getText().toString().replaceAll("\\s+",""));
-        double rate1 = Double.parseDouble(A4.getText().toString().replaceAll("\\s+",""));
-        double rate2 = Double.parseDouble(B4.getText().toString().replaceAll("\\s+",""));
-        double rate3 = Double.parseDouble(C4.getText().toString().replaceAll("\\s+",""));
-        double rate4 = Double.parseDouble(D4.getText().toString().replaceAll("\\s+",""));
+        try
+        {
+            concA1 = Double.parseDouble(A1.getText().toString().replaceAll("\\s+",""));
+            concA2 = Double.parseDouble(A2.getText().toString().replaceAll("\\s+",""));
+            concA3 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
+            concB1 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
+            concB2 = Double.parseDouble(B2.getText().toString().replaceAll("\\s+",""));
+            concB3 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
+            concC1 = Double.parseDouble(C1.getText().toString().replaceAll("\\s+",""));
+            concC2 = Double.parseDouble(C2.getText().toString().replaceAll("\\s+",""));
+            concC3 = Double.parseDouble(C3.getText().toString().replaceAll("\\s+",""));
+            concD1 = Double.parseDouble(D1.getText().toString().replaceAll("\\s+",""));
+            concD2 = Double.parseDouble(D2.getText().toString().replaceAll("\\s+",""));
+            concD3 = Double.parseDouble(D3.getText().toString().replaceAll("\\s+",""));
+            rate1 = Double.parseDouble(A4.getText().toString().replaceAll("\\s+",""));
+            rate2 = Double.parseDouble(B4.getText().toString().replaceAll("\\s+",""));
+            rate3 = Double.parseDouble(C4.getText().toString().replaceAll("\\s+",""));
+            rate4 = Double.parseDouble(D4.getText().toString().replaceAll("\\s+",""));
+        }
+        catch(NumberFormatException n)
+        {
+            if (A1.getText().toString().equals("") || A2.getText().toString().equals("") || B1.getText().toString().equals("") ||B2.getText().toString().equals("") ||C1.getText().toString().equals("") ||C2.getText().toString().equals("") ||A3.getText().toString().equals("") ||B3.getText().toString().equals("") ||C3.getText().toString().equals("") || D1.getText().toString().equals("") ||D2.getText().toString().equals("") ||D3.getText().toString().equals("") ||A4.getText().toString().equals("") ||B4.getText().toString().equals("") ||C4.getText().toString().equals("") ||D4.getText().toString().equals(""))
+            {
+                Toast.makeText(getActivity(), "Please fill all Text Boxes", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getActivity(), "Please enter a Number", Toast.LENGTH_LONG).show();
+            }
+        }
         double[] ratearr = new double[4];
         ratearr[0] = rate1;
         ratearr[1] = rate2;
@@ -472,32 +523,76 @@ public class rLawCalc extends Fragment
         {
             for (int b = 0; b<4; b++)
             {
-                if (concarray[a][b] != concarray[a][b+1] && b<3)
+                int i = 0;
+                int j = 0;
+                double temp = concarray[j][i];
+                if (concarray[b][a] != temp && i == a)
                 {
-                    if (a == 1)
-                    {
-                        if (concarray[a-1][b] == concarray[a-1][b+1] && concarray[a+1][b] == concarray[a+1][b+1])
-                        {
-                            concB = concarray[a][b+1]/concarray[a][b];
-                            rateB = ratearr[b+1]/ratearr[b];
-                            getExp(rateB, concB, expB);
-                        }
-                    }
                     if (a == 0)
                     {
-                        if (concarray[a+1][b] == concarray[a+1][b+1] && concarray[a+2][b] == concarray[a+2][b+1])
+                        concA = concarray[b][a]/temp;
+                        rateA = ratearr[b]/ratearr[j];
+                        if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a+2] == concarray[j][a+2])
                         {
-                            concA = concarray[a][b+1]/concarray[a][b];
-                            rateA = ratearr[b+1]/ratearr[b];
                             getExp(rateA, concA, expA);
                         }
                     }
-                    if (a == 2)
+                    else if (a == 1)
                     {
-                        if(concarray[a-1][b] == concarray[a-1][b+1] && concarray[a-2][b] == concarray[a-2][b+1])
+                        concB = concarray[b][a]/temp;
+                        rateB = ratearr[b]/ratearr[j];
+                        if (concarray[b][a-1] == concarray[j][a-1] && concarray[b][a+1] == concarray[j][a+1])
                         {
-                            concC = concarray[a][b+1]/concarray[a][b];
-                            rateC = ratearr[b+1]/ratearr[b];
+                            getExp(rateB, concB, expB);
+                        }
+                    }
+                    else if (a == 2)
+                    {
+                        concC = concarray[b][a]/temp;
+                        rateC = ratearr[b]/ratearr[j];
+                        if (concarray[b][a-2] == concarray[j][a-2] && concarray[b][a-1] == concarray[b][a-1])
+                        {
+                            getExp(rateC, concC, expC);
+                        }
+                    }
+                }
+                else
+                {
+                    concarray[a][b]= temp;
+                }
+
+            }
+        }
+        for (int a = 0; a<4; a++)
+        {
+            for (int b = 0; b<3; b++)
+            {
+                if (concarray[a][b] != concarray[a][b+1] && b<3)
+                {
+                    if (b == 1)
+                    {
+                        if (concarray[a][b-1] == concarray[a+1][b-1] && concarray[a][b+1] == concarray[a+1][b+1])
+                        {
+                            concB = concarray[a+1][b]/concarray[a][b];
+                            rateB = ratearr[a+1]/ratearr[a];
+                            getExp(rateB, concB, expB);
+                        }
+                    }
+                    if (b == 0)
+                    {
+                        if (concarray[a][b+1] == concarray[a+1][b+1] && concarray[a][b+2] == concarray[a+1][b+2])
+                        {
+                            concA = concarray[a+1][b]/concarray[a][b];
+                            rateA = ratearr[a+1]/ratearr[a];
+                            getExp(rateA, concA, expA);
+                        }
+                    }
+                    if (b == 2)
+                    {
+                        if(concarray[a][b-1] == concarray[a+1][b-1] && concarray[a][b-2] == concarray[a+1][b-2])
+                        {
+                            concC = concarray[a+1][b]/concarray[a][b];
+                            rateC = ratearr[a+1]/ratearr[a];
                             getExp(rateC, concC, expC);
                         }
                     }
