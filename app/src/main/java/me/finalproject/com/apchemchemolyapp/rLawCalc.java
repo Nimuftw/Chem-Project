@@ -251,10 +251,10 @@ public class rLawCalc extends Fragment
     {
         try
         {
-            concA1=Double.parseDouble(A1.getText().toString().replaceAll("\\s+",""));
-            concA2 = Double.parseDouble(B1.getText().toString().replaceAll("\\s+",""));
-            rate1 = Double.parseDouble(A3.getText().toString().replaceAll("\\s+",""));
-            rate2 = Double.parseDouble(B3.getText().toString().replaceAll("\\s+",""));
+            concA1=Double.parseDouble((""+A1.getText()).replaceAll("\\s+",""));
+            concA2 = Double.parseDouble((""+B1.getText()).replaceAll("\\s+",""));
+            rate1 = Double.parseDouble((""+A3.getText()).replaceAll("\\s+",""));
+            rate2 = Double.parseDouble((""+B3.getText()).replaceAll("\\s+",""));
         }
         catch(NumberFormatException n)
         {
@@ -316,7 +316,7 @@ public class rLawCalc extends Fragment
             }
             else
             {
-                Toast.makeText(getActivity(), "YOu did not enter a valid number. Please try again", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Please enter Numbers Only", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -494,7 +494,7 @@ public class rLawCalc extends Fragment
             }
             else
             {
-                Toast.makeText(getActivity(), "Please enter a Number", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Please enter numbers Only", Toast.LENGTH_LONG).show();
             }
         }
         double[] ratearr = new double[4];
@@ -518,13 +518,13 @@ public class rLawCalc extends Fragment
         boolean A = false;
         boolean B = false;
         boolean C = false;
+        int i = 0;
+        int j = 0;
         //get first element
         for (int a = 0; a<3; a++)
         {
             for (int b = 0; b<4; b++)
             {
-                int i = 0;
-                int j = 0;
                 double temp = concarray[j][i];
                 if (concarray[b][a] != temp && i == a)
                 {
@@ -535,6 +535,10 @@ public class rLawCalc extends Fragment
                         if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a+2] == concarray[j][a+2])
                         {
                             getExp(rateA, concA, expA);
+                            A = true;
+                            j = b;
+                            i = a;
+                            concarray[b][a]= temp;
                         }
                     }
                     else if (a == 1)
@@ -544,6 +548,10 @@ public class rLawCalc extends Fragment
                         if (concarray[b][a-1] == concarray[j][a-1] && concarray[b][a+1] == concarray[j][a+1])
                         {
                             getExp(rateB, concB, expB);
+                            B = true;
+                            j = b;
+                            i = a;
+                            concarray[b][a]= temp;
                         }
                     }
                     else if (a == 2)
@@ -553,16 +561,172 @@ public class rLawCalc extends Fragment
                         if (concarray[b][a-2] == concarray[j][a-2] && concarray[b][a-1] == concarray[b][a-1])
                         {
                             getExp(rateC, concC, expC);
+                            C = true;
+                            j = b;
+                            i = a;
+                            concarray[b][a]= temp;
                         }
                     }
                 }
                 else
                 {
-                    concarray[a][b]= temp;
+                    j = b;
+                    i = a;
+                    concarray[b][a]= temp;
                 }
-
             }
         }
+        //Get Remaining Elements
+        while(!A && !B && !C)
+        {
+        for (int a = 0; a<3; a++)
+        {
+            for (int b = 0; b < 4; b++)
+            {
+                double temp = concarray[j][i];
+                if (concarray[b][a] != temp && i == a)
+                {
+                    if (a == 0)
+                    {
+                        concA = concarray[b][a] / temp;
+                        rateA = ratearr[b] / ratearr[j];
+                        if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a + 2] == concarray[j][a + 2] && B)
+                        {
+                            if (expB == 0)
+                            {
+                                getExp(rateA, concA, expA);
+                            }
+                            else if (expB == 1)
+                            {
+                                double t = concB;
+                                rateA /= t;
+                                getExp(rateA, concA, expA);
+                            }
+                            else if (expB == 2)
+                            {
+                                double t = concB * concB;
+                                rateA /= t;
+                                getExp(rateA, concA, expA);
+                            }
+                        }
+                        else if (concarray[b][a + 1] == concarray[j][a + 1] && concarray[b][a + 2] != concarray[j][a + 2] && C)
+                        {
+                            if (expC == 0)
+                            {
+                                getExp(rateA, concA, expA);
+                            }
+                            else if (expC == 1)
+                            {
+                                double t = concC;
+                                rateA /= t;
+                                getExp(rateA, concA, expA);
+                            }
+                            else if (expC == 2)
+                            {
+                                double t = concC * concC;
+                                rateA /= t;
+                                getExp(rateA, concA, expA);
+                            }
+                        }
+                    }
+                    else if (a == 1)
+                    {
+                        concB = concarray[b][a] / temp;
+                        rateB = ratearr[b] / ratearr[j];
+                        if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a - 1] == concarray[j][a - 1] && C)
+                        {
+                            if (expC == 0)
+                            {
+                                getExp(rateB, concB, expB);
+                            }
+                            else if (expC == 1)
+                            {
+                                double t = concC;
+                                rateB /= t;
+                                getExp(rateB, concB, expB);
+                            }
+                            else if (expC == 2)
+                            {
+                                double t = concC * concC;
+                                rateB /= t;
+                                getExp(rateB, concB, expB);
+                            }
+                        }
+                        else if (concarray[b][a + 1] == concarray[j][a + 1] && concarray[b][a - 1] != concarray[j][a - 1] && A)
+                        {
+                            if (expA == 0)
+                            {
+                                getExp(rateB, concB, expB);
+                            }
+                            else if (expA == 1)
+                            {
+                                double t = concA;
+                                rateB /= t;
+                                getExp(rateB, concB, expB);
+                            }
+                            else if (expA == 2)
+                            {
+                                double t = concA * concA;
+                                rateB /= t;
+                                getExp(rateB, concB, expB);
+                            }
+                        }
+                    }
+                    else if (a == 2)
+                    {
+                        concC = concarray[b][a] / temp;
+                        rateC = ratearr[b] / ratearr[j];
+                        if (concarray[b][a - 2] != concarray[j][a - 2] && concarray[b][a - 1] == concarray[j][a - 1] && A)
+                        {
+                            if (expA == 0)
+                            {
+                                getExp(rateC, concC, expC);
+                            }
+                            else if (expA == 1)
+                            {
+                                double t = concA;
+                                rateB /= t;
+                                getExp(rateC, concC, expC);
+                            }
+                            else if (expA == 2)
+                            {
+                                double t = concA * concA;
+                                rateB /= t;
+                                getExp(rateC, concC, expC);
+                            }
+                        }
+                        else if (concarray[b][a - 2] == concarray[j][a - 2] && concarray[b][a - 1] != concarray[j][a - 1] && B)
+                        {
+                            if (expB == 0)
+                            {
+                                getExp(rateC, concC, expC);
+                            }
+                            else if (expB == 1)
+                            {
+                                double t = concB;
+                                rateB /= t;
+                                getExp(rateC, concC, expC);
+                            }
+                            else if (expB == 2)
+                            {
+                                double t = concB * concB;
+                                rateB /= t;
+                                getExp(rateC, concC, expC);
+                            }
+                        }
+                    }
+                }
+                else if (i != a)
+                {
+                    j = b;
+                    i = a;
+                    concarray[b][a] = temp;
+                }
+            }
+        }
+        }
+
+        //horizontal scan
         for (int a = 0; a<4; a++)
         {
             for (int b = 0; b<3; b++)
@@ -786,402 +950,4 @@ public class rLawCalc extends Fragment
             exp = 3;
         }
     }
-    //get first exp
-//        if (concA1 != concB1)
-//        {
-//            if (concA2 == concB2 && concA3 == concB3)
-//            {
-//                concA = concB1 / concA1;
-//                rateA = rate2 / rate1;
-//            }
-//        }
-//        else if (concA1 != concC1)
-//        {
-//            if (concA2 == concC2 && concA3 == concC3)
-//            {
-//                concA = concC1 / concA1;
-//                rateA = rate3 / rate1;
-//            }
-//        }
-//        else if (concB1 != concC1)
-//        {
-//            if (concB2 == concC2 && concB3 == concC3)
-//            {
-//                concA = concC1 / concB1;
-//                rateA = rate3 / rate2;
-//            }
-//        }
-//        else if (concA1 != concD1)
-//        {
-//            if (concA2 == concD2 && concA3 == concD3)
-//            {
-//                concA = concC1 / concB1;
-//                rateA = rate4 / rate1;
-//            }
-//        }
-//        else if (concB1 != concD1)
-//        {
-//            if (concB2 == concD2 && concB3 == concD3)
-//            {
-//                concA = concD1 / concB1;
-//                rateA = rate4 / rate2;
-//            }
-//        }
-//        else if (concD1 != concC1)
-//        {
-//            if (concD2 == concC2 && concD3 == concC3)
-//            {
-//                concA = concD1 / concC1;
-//                rateA = rate4 / rate3;
-//            }
-//        }
-//        if (rateA == concA)
-//        {
-//            expA = 1;
-//        }
-//        else if (rateA == (concA * concA))
-//        {
-//            expA = 2;
-//        }
-//        else if (rateA == 1)
-//        {
-//            expA = 0;
-//        }
-//        if (concA2 != concB2)
-//        {
-//            if (concA1 == concB1 && concA3 == concB3)
-//            {
-//                rateB = rate2 / rate1;
-//                concB = concB2/concA2;
-//            }
-//        }
-//        else if (concB2 != concC2 )
-//        {
-//            if (concB1 == concC1 && concB3 == concC3)
-//            {
-//                rateB = rate3/rate2;
-//                concB = concC2/concB2;
-//            }
-//        }
-//        else if (concC2 != concA2)
-//        {
-//            if (concC1 == concA1 && concC3 == concA3)
-//            {
-//                rateB = rate3/rate1;
-//                concB = concC2/concA2;
-//            }
-//        }
-//        else if (concD2 != concA2)
-//        {
-//            if (concD1 == concA1 && concD3 == concA3)
-//            {
-//                rateB = rate4/rate1;
-//                concB = concD2/concA2;
-//            }
-//        }
-//        if (concD2 != concB2)
-//        {
-//            if (concD1 == concB1 && concD3 == concB3)
-//            {
-//                rateB = rate4 / rate2;
-//                concB = concD2/concB2;
-//            }
-//        }
-//        else if (concC2 != concD2)
-//        {
-//            if (concD1 == concC1 && concD3 == concC3)
-//            {
-//                rateB = rate4 / rate3;
-//                concB = concD2/concC2;
-//            }
-//        }
-//
-//        if (rateB == 1)
-//        {
-//            expB = 0;
-//        }
-//        else if(rateB == concB)
-//        {
-//            expB = 1;
-//        }
-//        else if (rateB == concB*concB)
-//        {
-//            expB = 2;
-//        }
-//        if (concA3 != concB3)
-//        {
-//            if (concA1 == concB1 && concA2 == concB2)
-//            {
-//                rateC = rate2 / rate1;
-//                concC = concB2/concA2;
-//            }
-//        }
-//        else if (concB3 != concC3)
-//        {
-//            if (concB1 == concC1 && concB2 == concC2)
-//            {
-//                rateC = rate3/rate2;
-//                concC = concC2/concB2;
-//            }
-//        }
-//        else if (concC3 != concA3)
-//        {
-//            if (concC1 == concA1 && concC2 == concA2)
-//            {
-//                rateC = rate3/rate1;
-//                concC = concC2/concA2;
-//            }
-//        }
-//        if (concD3 != concB3)
-//        {
-//            if (concD1 == concB1 && concD2 == concB2)
-//            {
-//                rateC = rate4 / rate2;
-//                concC = concD2/concB2;
-//            }
-//        }
-//        if (concD3 != concA3)
-//        {
-//            if (concA1 == concD1 && concA2 == concD2)
-//            {
-//                rateC = rate4 / rate1;
-//                concC = concD2/concA2;
-//            }
-//        }
-//        if (concD3 != concC3)
-//        {
-//            if (concD1 == concC1 && concD2 == concC2)
-//            {
-//                rateC = rate4 / rate3;
-//                concC = concD2/concC2;
-//            }
-//        }
-//        if (rateC == 1)
-//        {
-//            expC = 0;
-//        }
-//        else if(rateC == concC)
-//        {
-//            expC = 1;
-//        }
-//        else if (rateC == concC*concC)
-//        {
-//            expC = 2;
-//        }
-    //find second element
-//        if (expA == 0 || expA == 1 || expA == 2)
-//        {
-//            if (expB == 0 || expB == 1 || expB == 2)
-//            {
-//                if (expC == 0 || expC == 1 || expC == 2)
-//                {
-//                    resp = "rate = k[A]" + expA  + "[B]" + expB + "C" + expC;
-//                    resp = resp.replaceAll("2", "²");
-//                }
-//                if (concA3 != concB3)
-//                {
-//                    if (concA2 == concB2 && concA1 != concB1)
-//                    {
-//                        double temp = 0;
-//                        concC = concB3/concA3;
-//                        rateC = rate2/rate1;
-//                        if (expA == 1)
-//                        {
-//                            temp = (concB1/concA1);
-//                        }
-//                        if (expA == 2)
-//                        {
-//                            temp = (concB1/concA1)*(concB1/concA1);
-//                        }
-//                        rateC /= temp;
-//                    }
-//                    if (concA2 != concB2 && concA1 == concB1)
-//                    {
-//                        double temp = 0;
-//                        concC = concB3/concA3;
-//                        rateC = rate2/rate1;
-//                        if (expB == 1)
-//                        {
-//                            temp = (concB2/concA2);
-//                        }
-//                        if (expB == 2)
-//                        {
-//                            temp = (concB2/concA2)*(concB2/concA2);
-//                        }
-//                        rateC /= temp;
-//                    }
-//                }
-//                if (concB3 != concC3)
-//                {
-//                    if (concB2 == concC2 && concB1 != concC1)
-//                    {
-//                        double temp = 0;
-//                        concC = concC3/concB3;
-//                        rateC = rate2/rate1;
-//                        if (expA == 1)
-//                        {
-//                            temp = (concC1/concB1);
-//                        }
-//                        if (expA == 2)
-//                        {
-//                            temp = (concC1/concB1)*(concC1/concB1);
-//                        }
-//                        rateC /= temp;
-//                    }
-//                    if (concC2 != concB2 && concC1 == concB1)
-//                    {
-//                        double temp = 0;
-//                        concC = concC3/concB3;
-//                        rateC = rate2/rate1;
-//                        if (expB == 1)
-//                        {
-//                            temp = (concC2/concB2);
-//                        }
-//                        if (expB == 2)
-//                        {
-//                            temp = (concC2/concB2)*(concB2/concB2);
-//                        }
-//                        rateC /= temp;
-//                    }
-//                }
-//                if (concD3 != concC3)
-//                {
-//                    if (concC2 == concD2 && concC1 != concD1)
-//                    {
-//                        double temp = 0;
-//                        concC = concD3/concC3;
-//                        rateC = rate3/rate2;
-//                        if (expA == 1)
-//                        {
-//                            temp = (concD1/concC1);
-//                        }
-//                        if (expA == 2)
-//                        {
-//                            temp = (concD1/concC1)*(concD1/concC1);
-//                        }
-//                        rateC /= temp;
-//                    }
-//                    if (concC2 != concD2 && concA1 == concB1)
-//                    {
-//                        double temp = 0;
-//                        concC = concB3/concA3;
-//                        rateC = rate4/rate3;
-//                        if (expB == 1)
-//                        {
-//                            temp = (concB2/concA2);
-//                        }
-//                        if (expB == 2)
-//                        {
-//                            temp = (concB2/concA2)*(concB2/concA2);
-//                        }
-//                        rateC /= temp;
-//                    }
-//                }
-//            }
-//            if (expC == 0 || expC == 1 || expC == 2)
-//            {
-//                if (expB == 0 || expB == 1 || expB == 2)
-//                {
-//                    if (concA1 != concB1)
-//                    {
-//                        if (concA2 == concB2 && concA3 != concB3)
-//                        {
-//                            double temp = 0;
-//                            concA = concB1/concA1;
-//                            rateA = rate2/rate1;
-//                            if (expA == 1)
-//                            {
-//                                temp = (concB3/concA3);
-//                            }
-//                            if (expA == 2)
-//                            {
-//                                temp = (concB3/concA3)*(concB3/concA3);
-//                            }
-//                            rateA /= temp;
-//                        }
-//                        if (concA2 != concB2 && concA3 == concB3)
-//                        {
-//                            double temp = 0;
-//                            concA = concB1/concA1;
-//                            rateA = rate2/rate1;
-//                            if (expB == 1)
-//                            {
-//                                temp = (concB2/concA2);
-//                            }
-//                            if (expB == 2)
-//                            {
-//                                temp = (concB2/concA2)*(concB2/concA2);
-//                            }
-//                            rateA /= temp;
-//                        }
-//                    }
-//                    if (concB1 != concC1)
-//                    {
-//                        if (concC2 == concB2 && concC3 != concB3)
-//                        {
-//                            double temp = 0;
-//                            concA = concC1/concB1;
-//                            rateA = rate3/rate2;
-//                            if (expA == 1)
-//                            {
-//                                temp = (concC3/concB3);
-//                            }
-//                            if (expA == 2)
-//                            {
-//                                temp = (concC3/concB3)*(concC3/concB3);
-//                            }
-//                            rateA /= temp;
-//                        }
-//                        if (concC2 != concB2 && concB3 == concC3)
-//                        {
-//                            double temp = 0;
-//                            concA = concC1/concB1;
-//                            rateA = rate3/rate2;
-//                            if (expB == 1)
-//                            {
-//                                temp = (concC2/concB2);
-//                            }
-//                            if (expB == 2)
-//                            {
-//                                temp = (concC2/concB2)*(concC2/concB2);
-//                            }
-//                            rateA /= temp;
-//                        }
-//                    }
-//                    if (concD1 != concC1)
-//                    {
-//                        if (concD2 == concC2 && concD3 != concC3)
-//                        {
-//                            double temp = 0;
-//                            concA = concB1/concA1;
-//                            rateA = rate2/rate1;
-//                            if (expA == 1)
-//                            {
-//                                temp = (concD3/concC3);
-//                            }
-//                            if (expA == 2)
-//                            {
-//                                temp = (concD3/concC3)*(concD3/concC3);
-//                            }
-//                            rateA /= temp;
-//                        }
-//                        if (concD2 != concC2 && concD3 == concC3)
-//                        {
-//                            double temp = 0;
-//                            concA = concD1/concC1;
-//                            rateA = rate4/rate3;
-//                            if (expB == 1)
-//                            {
-//                                temp = (concD2/concC2);
-//                            }
-//                            if (expB == 2)
-//                            {
-//                                temp = (concD2/concC2)*(concD2/concC2);
-//                            }
-//                            rateA /= temp;
-//                        }
-//                    }
-//                }
-//            }
-//        }
 }
