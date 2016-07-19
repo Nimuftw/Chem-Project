@@ -239,6 +239,12 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new redpotentials())
                     .commit();
         }
+        else if (id == R.id.nav_pHcalc)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new pHCalc_fragment())
+                    .commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

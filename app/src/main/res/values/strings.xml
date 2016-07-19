@@ -25,12 +25,26 @@
     <string name="test">Testing</string>
     <string name="solrulestitle">Solubility Rules</string>
     <string name="acidtitle">Strong Acids and Bases</string>
-    <!-- Fills up ArrayAdapter for Spinner -->
+    <string name="pHCalcTitle">pH Calculator</string>
+    <string name="StrongA">[Strong Acid]</string>
+    <string name="VolStrongA">Volume of Strong Acid</string>
+    <string name="StrongB">[Strong Base]</string>
+    <string name="VolStrongB">Volume of Strong Base</string>
+    <!-- Fills up ArrayAdapter for rLawCalc Spinner -->
     <string-array name="numOfReactants">
         <item>How Many Reactants are in this Reaction?</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
+    </string-array>
+    <!-- Fills up ArrayAdapter for pHCalc Spinner -->
+    <string-array name="pHOptions">
+        <item></item>
+        <item>Strong Acid - Strong Base Titration</item>
+        <item>Strong Acid - Weak Base Titration</item>
+        <item>Weak Acid - Strong Base Titration</item>
+        <item>Conjugate Salt</item>
+        <item>One Acid</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
