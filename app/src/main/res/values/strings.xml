@@ -30,6 +30,18 @@
     <string name="VolStrongA">Volume of Strong Acid</string>
     <string name="StrongB">[Strong Base]</string>
     <string name="VolStrongB">Volume of Strong Base</string>
+    <string name="pKaWeakAcid">K&#8336;</string>
+    <string name="pKb">Kb</string>
+    <string name="WeakA">[Weak Acid]</string>
+    <string name="VolWeakA">Volume of Weak Acid</string>
+    <string name="WeakB">[Weak Base]</string>
+    <string name="VolWeakB">Volume of Weak Base</string>
+    <string name="VolAcid">Volume of Acid</string>
+    <string name="concAcid">[Acid]</string>
+    <string name="oneKa">K&#8336;(for weak acid only)</string>
+    <string name="VolBase">Volume of Base</string>
+    <string name="concBase">[Base]</string>
+    <string name="oneKb">Kb (for weak base only)</string>
     <!-- Fills up ArrayAdapter for rLawCalc Spinner -->
     <string-array name="numOfReactants">
         <item>How Many Reactants are in this Reaction?</item>
@@ -39,12 +51,12 @@
     </string-array>
     <!-- Fills up ArrayAdapter for pHCalc Spinner -->
     <string-array name="pHOptions">
-        <item></item>
+        <item>Please Choose an Option</item>
         <item>Strong Acid - Strong Base Titration</item>
         <item>Strong Acid - Weak Base Titration</item>
         <item>Weak Acid - Strong Base Titration</item>
-        <item>Conjugate Salt</item>
         <item>One Acid</item>
+        <item>One Base</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
