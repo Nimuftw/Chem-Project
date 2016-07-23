@@ -42,6 +42,7 @@
     <string name="VolBase">Volume of Base</string>
     <string name="concBase">[Base]</string>
     <string name="oneKb">Kb (for weak base only)</string>
+    <string name="rate">Rate</string>
     <!-- Fills up ArrayAdapter for rLawCalc Spinner -->
     <string-array name="numOfReactants">
         <item>How Many Reactants are in this Reaction?</item>
