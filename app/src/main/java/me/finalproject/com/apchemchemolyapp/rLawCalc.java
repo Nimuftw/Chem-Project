@@ -14,8 +14,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
-import android.widget.Adapter;
-import org.w3c.dom.Text;
 
 
 public class rLawCalc extends Fragment
