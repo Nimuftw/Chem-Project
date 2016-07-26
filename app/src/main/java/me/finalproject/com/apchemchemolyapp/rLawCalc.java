@@ -343,10 +343,15 @@ public class rLawCalc extends Fragment
                 {
                     if (a == 0)
                     {
-                        concA = concarray[b][a]/temp;
-                        rateA = ratearr[b]/ratearr[j];
+
                         if (concarray[b][a+1] == concarray[j][a+1])
                         {
+                            concA = concarray[b][a]/temp;
+                            concA = Math.round(concA * 100);
+                            concA /= 100;
+                            rateA = ratearr[b]/ratearr[j];
+                            rateA = Math.round(rateA*100);
+                            rateA /= 100;
                             getExp("A");
                             A = true;
                             j = b;
@@ -356,10 +361,15 @@ public class rLawCalc extends Fragment
                     }
                     else if (a == 1)
                     {
-                        concB = concarray[b][a]/temp;
-                        rateB = ratearr[b]/ratearr[j];
+
                         if (concarray[b][a-1] == concarray[j][a-1])
                         {
+                            concB = concarray[b][a]/temp;
+                            concB = Math.round(concB*100);
+                            concB /= 100;
+                            rateB = ratearr[b]/ratearr[j];
+                            rateB = Math.round(rateB*100);
+                            rateB /= 100;
                             getExp("B");
                             B = true;
                             j = b;
@@ -376,18 +386,26 @@ public class rLawCalc extends Fragment
                 }
             }
         }
+        i = 0;
+        j = 0;
+        temp = concarray[0][0];
         for (int a = 0; a<2; a++)
         {
             for (int b = 0; b<3; b++)
             {
                 if (concarray[b][a] != temp && i == a)
                 {
-                    if (a == 0)
+                    if (a == 0 && !A)
                     {
-                        concA = concarray[b][a]/temp;
-                        rateA = ratearr[b]/ratearr[j];
+
                         if (concarray[b][a+1] == concarray[j][a+1])
                         {
+                            concA = concarray[b][a]/temp;
+                            concA = Math.round(concA * 100);
+                            concA /= 100;
+                            rateA = ratearr[b]/ratearr[j];
+                            rateA = Math.round(rateA*100);
+                            rateA /= 100;
                             getExp("A");
                             A = true;
 //                            j = b;
@@ -395,12 +413,17 @@ public class rLawCalc extends Fragment
 //                            temp = concarray[b][a];
                         }
                     }
-                    else if (a == 1)
+                    else if (a == 1 && !B)
                     {
-                        concB = concarray[b][a]/temp;
-                        rateB = ratearr[b]/ratearr[j];
+
                         if (concarray[b][a-1] == concarray[j][a-1])
                         {
+                            concB = concarray[b][a]/temp;
+                            concB = Math.round(concB*100);
+                            concB /= 100;
+                            rateB = ratearr[b]/ratearr[j];
+                            rateB = Math.round(rateB*100);
+                            rateB /= 100;
                             getExp("B");
                             B = true;
 //                            j = b;
@@ -423,7 +446,7 @@ public class rLawCalc extends Fragment
         i = 0;
         j = 0;
         //Second Element
-        while(!A && !B)
+        while(!A || !B)
         {
             for (int a = 0; a<2; a++)
             {
@@ -434,10 +457,15 @@ public class rLawCalc extends Fragment
                     {
                         if (a == 0)
                         {
-                            concA = concarray[b][a] / temp;
-                            rateA = ratearr[b] / ratearr[j];
+
                             if (concarray[b][a + 1] != concarray[j][a + 1] && B)
                             {
+                                concA = concarray[b][a] / temp;
+                                concA = Math.round(concA * 100);
+                                concA /= 100;
+                                rateA = ratearr[b] / ratearr[j];
+                                rateA = Math.round(rateA*100);
+                                rateA /= 100;
                                 if (expB == 0)
                                 {
                                     getExp("a");
@@ -445,14 +473,16 @@ public class rLawCalc extends Fragment
                                 }
                                 else if (expB == 1)
                                 {
-                                    double t = concB;
+                                    double t = Math.round((concarray[b][a+1]/concarray[j][a+1])*100);
+                                    t /= 100;
                                     rateA /= t;
                                     getExp("a");
                                     A = true;
                                 }
                                 else if (expB == 2)
                                 {
-                                    double t = concB * concB;
+                                    double t = Math.round(((concarray[b][a+1]/concarray[j][a+1])*(concarray[b][a+1]/concarray[j][a+1]))*100);
+                                    t /= 100;
                                     rateA /= t;
                                     getExp("a");
                                     A = true;
@@ -462,10 +492,15 @@ public class rLawCalc extends Fragment
                         }
                         else if (a == 1)
                         {
-                            concB = concarray[b][a] / temp;
-                            rateB = ratearr[b] / ratearr[j];
+
                             if (concarray[b][a - 1] != concarray[j][a - 1] && A)
                             {
+                                concB = concarray[b][a] / temp;
+                                concB = Math.round(concB*100);
+                                concB /= 100;
+                                rateB = ratearr[b] / ratearr[j];
+                                rateB = Math.round(rateB*100);
+                                rateB /= 100;
                                 if (expA == 0)
                                 {
                                     getExp("b");
@@ -473,14 +508,16 @@ public class rLawCalc extends Fragment
                                 }
                                 else if (expA == 1)
                                 {
-                                    double t = concA;
+                                    double t = Math.round((concarray[b][a-1]/concarray[j][a-1])*100);
+                                    t /= 100;
                                     rateB /= t;
                                     getExp("b");
                                     B = true;
                                 }
                                 else if (expA == 2)
                                 {
-                                    double t = concA * concA;
+                                    double t = Math.round(((concarray[b][a+1]/concarray[j][a+1])*(concarray[b][a+1]/concarray[j][a+1]))*100);
+                                    t /= 100;
                                     rateB /= t;
                                     getExp("b");
                                     B = true;
@@ -555,20 +592,210 @@ public class rLawCalc extends Fragment
         int i = 0;
         int j = 0;
         double temp = concarray[j][i];
+
+        for (int a = 0; a<3; a++)
+        {
+            for (int b = 0; b<4; b++)
+            {
+                if (concarray[b][a] == temp && i == a)
+                {
+                    if (a == 0)
+                    {
+                        if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a+2] != concarray[j][a+2] && !C)
+                        {
+                            concC = concarray[b][a+2] / concarray[j][a+2];
+                            concC = Math.round(concC * 100);
+                            concC /= 100;
+                            rateC  = ratearr[b]/ratearr[j];
+                            rateC = Math.round(rateC*100);
+                            rateC /= 100;
+                            getExp("C");
+                            C = true;
+                        }
+                        else if (concarray[b][a+1] != concarray[j][a+1] && concarray[b][a+2] == concarray[j][a+2])
+                        {
+                            concB = concarray[b][a+1] / concarray[j][a+1];
+                            concB = Math.round(concB*100);
+                            concB /= 100;
+                            rateB = ratearr[b]/ratearr[j];
+                            rateB = Math.round(rateB*100);
+                            rateB /= 100;
+                            getExp("B");
+                            B = true;
+                        }
+                    }
+                    else if (a == 1)
+                    {
+                        if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a-1] != concarray[j][a-1] && !A)
+                        {
+                            concA = concarray[b][a-1] / concarray[j][a-1];
+                            concA = Math.round(concA * 100);
+                            concA /= 100;
+                            rateA = ratearr[b]/ratearr[j];
+                            rateA = Math.round(rateA*100);
+                            rateA /= 100;
+                            getExp("A");
+                            A = true;
+                        }
+                        else if (concarray[b][a+1] != concarray[j][a+1] && concarray[b][a-1] == concarray[j][a-1] && !C)
+                        {
+                            concC = concarray[b][a+1] / concarray[j][a+1];
+                            concC = Math.round(concC * 100);
+                            concC /= 100;
+                            rateC  = ratearr[b]/ratearr[j];
+                            rateC = Math.round(rateC*100);
+                            rateC /= 100;
+                            getExp("C");
+                            C = true;
+                        }
+                    }
+                    else if (a == 2)
+                    {
+                        if (concarray[b][a-1] != concarray[j][a-1] && concarray[b][a-2] == concarray[j][a-2] && !B)
+                        {
+                            concB = concarray[b][a-1] / concarray[j][a-1];
+                            concB = Math.round(concB*100);
+                            concB /= 100;
+                            rateB = ratearr[b]/ratearr[j];
+                            rateB = Math.round(rateB*100);
+                            rateB /= 100;
+                            getExp("B");
+                            B = true;
+
+                        }
+                        else if (concarray[b][a-1] == concarray[j][a-1] && concarray[b][a-2] != concarray[j][a-2] && !A)
+                        {
+                            concA = concarray[b][a-2] / concarray[j][a-2];
+                            concA = Math.round(concA * 100);
+                            concA /= 100;
+                            rateA = ratearr[b]/ratearr[j];
+                            rateA = Math.round(rateA*100);
+                            rateA /= 100;
+                            getExp("A");
+                            A = true;
+
+                        }
+                    }
+                }
+                else if(i != a)
+                {
+                    j = b;
+                    i = a;
+                    temp = concarray[b][a];
+                }
+            }
+        }
+        //Scanning for first difference (Different Method)
+        for (int a = 0; a<3; a++)
+    {
+        for (int b = 0; b<4; b++)
+        {
+            if (concarray[b][a] == temp && i == a)
+            {
+                if (a == 0)
+                {
+                    if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a+2] != concarray[j][a+2] && !C)
+                    {
+                        concC = concarray[b][a+2] / concarray[j][a+2];
+                        concC = Math.round(concC * 100);
+                        concC /= 100;
+                        rateC  = ratearr[b]/ratearr[j];
+                        rateC = Math.round(rateC*100);
+                        rateC /= 100;
+                        getExp("C");
+                        C = true;
+                    }
+                    else if (concarray[b][a+1] != concarray[j][a+1] && concarray[b][a+2] == concarray[j][a+2] && !B)
+                    {
+                        concB = concarray[b][a+1] / concarray[j][a+1];
+                        concB = Math.round(concB*100);
+                        concB /= 100;
+                        rateB = ratearr[b]/ratearr[j];
+                        rateB = Math.round(rateB*100);
+                        rateB /= 100;
+                        getExp("B");
+                        B = true;
+                    }
+                }
+                else if (a == 1)
+                {
+                    if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a-1] != concarray[j][a-1] && !A)
+                    {
+                        concA = concarray[b][a-1] / concarray[j][a-1];
+                        concA = Math.round(concA * 100);
+                        concA /= 100;
+                        rateA = ratearr[b]/ratearr[j];
+                        rateA = Math.round(rateA*100);
+                        rateA /= 100;
+                        getExp("A");
+                        A = true;
+                    }
+                    else if (concarray[b][a+1] != concarray[j][a+1] && concarray[b][a-1] == concarray[j][a-1] && !C)
+                    {
+                        concC = concarray[b][a+1] / concarray[j][a+1];
+                        concC = Math.round(concC * 100);
+                        concC /= 100;
+                        rateC  = ratearr[b]/ratearr[j];
+                        rateC = Math.round(rateC*100);
+                        rateC /= 100;
+                        getExp("C");
+                        C = true;
+                    }
+                }
+                else if (a == 2)
+                {
+                    if (concarray[b][a-1] != concarray[j][a-1] && concarray[b][a-2] == concarray[j][a-2] && !B)
+                    {
+                        concB = concarray[b][a-1] / concarray[j][a-1];
+                        concB = Math.round(concB*100);
+                        concB /= 100;
+                        rateB = ratearr[b]/ratearr[j];
+                        rateB = Math.round(rateB*100);
+                        rateB /= 100;
+                        getExp("B");
+                        B = true;
+                    }
+                    else if (concarray[b][a-1] == concarray[j][a-1] && concarray[b][a-2] != concarray[j][a-2] && !A)
+                    {
+                        concA = concarray[b][a-2] / concarray[j][a-2];
+                        concA = Math.round(concA * 100);
+                        concA /= 100;
+                        rateA = ratearr[b]/ratearr[j];
+                        rateA = Math.round(rateA*100);
+                        rateA /= 100;
+                        getExp("A");
+                        A = true;
+                    }
+                }
+            }
+            else
+            {
+                j = b;
+                i = a;
+                temp = concarray[b][a];
+            }
+        }
+    }
+
+
+        //original method
         //get first element
         for (int a = 0; a<3; a++)
         {
             for (int b = 0; b<4; b++)
             {
-
                 if (concarray[b][a] != temp && i == a)
                 {
                     if (a == 0)
                     {
-                        concA = concarray[b][a]/temp;
-                        rateA = ratearr[b]/ratearr[j];
-                        if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a+2] == concarray[j][a+2])
+                        if (concarray[b][a+1] == concarray[j][a+1] && concarray[b][a+2] == concarray[j][a+2] && !A)
                         {
+                            concA = concarray[b][a]/temp;
+                            concA = Math.round(concA * 100);
+                            concA /= 100;
+                            rateA = ratearr[b]/ratearr[j];
+                            rateA = Math.round(rateA*100);
+                            rateA /= 100;
                             getExp("A");
                             A = true;
                             j = b;
@@ -578,10 +805,14 @@ public class rLawCalc extends Fragment
                     }
                     else if (a == 1)
                     {
-                        concB = concarray[b][a]/temp;
-                        rateB = ratearr[b]/ratearr[j];
-                        if (concarray[b][a-1] == concarray[j][a-1] && concarray[b][a+1] == concarray[j][a+1])
+                        if (concarray[b][a-1] == concarray[j][a-1] && concarray[b][a+1] == concarray[j][a+1] && !B)
                         {
+                            concB = concarray[b][a]/temp;
+                            concB = Math.round(concB*100);
+                            concB /= 100;
+                            rateB = ratearr[b]/ratearr[j];
+                            rateB = Math.round(rateB*100);
+                            rateB /= 100;
                             getExp("B");
                             B = true;
                             j = b;
@@ -591,10 +822,15 @@ public class rLawCalc extends Fragment
                     }
                     else if (a == 2)
                     {
-                        concC = concarray[b][a]/temp;
-                        rateC = ratearr[b]/ratearr[j];
-                        if (concarray[b][a-2] == concarray[j][a-2] && concarray[b][a-1] == concarray[b][a-1])
+
+                        if (concarray[b][a-2] == concarray[j][a-2] && concarray[b][a-1] == concarray[b][a-1] && !C)
                         {
+                            concC = concarray[b][a]/temp;
+                            concC = Math.round(concC * 100);
+                            concC /= 100;
+                            rateC = ratearr[b]/ratearr[j];
+                            rateC = Math.round(rateC*100);
+                            rateC /= 100;
                             getExp("C");
                             C = true;
                             j = b;
@@ -607,7 +843,7 @@ public class rLawCalc extends Fragment
                 {
                     j = b;
                     i = a;
-                    concarray[b][a]= temp;
+                    temp = concarray[b][a];
                 }
             }
         }
@@ -619,23 +855,28 @@ public class rLawCalc extends Fragment
                 {
                     if (a == 0)
                     {
-                        concA = concarray[b][a]/temp;
-                        rateA = ratearr[b]/ratearr[j];
-                        if (concarray[b][a+1] == concarray[j][a+1])
+                        if (concarray[b][a+1] == concarray[j][a+1] && !A)
                         {
+                            concA = concarray[b][a]/temp;
+                            concA = Math.round(concA * 100);
+                            concA /= 100;
+                            rateA = ratearr[b]/ratearr[j];
+                            rateA = Math.round(rateA*100);
+                            rateA /= 100;
                             getExp("A");
                             A = true;
-//                            j = b;
-//                            i = a;
-//                            temp = concarray[b][a];
                         }
                     }
                     else if (a == 1)
                     {
-                        concB = concarray[b][a]/temp;
-                        rateB = ratearr[b]/ratearr[j];
-                        if (concarray[b][a-1] == concarray[j][a-1])
+                        if (concarray[b][a-1] == concarray[j][a-1] && concarray[b][a+1] == concarray[j][a+1] && !B)
                         {
+                            concB = concarray[b][a]/temp;
+                            concB = Math.round(concB*100);
+                            concB /= 100;
+                            rateB = ratearr[b]/ratearr[j];
+                            rateB = Math.round(rateB*100);
+                            rateB /= 100;
                             getExp("B");
                             B = true;
 //                            j = b;
@@ -645,10 +886,14 @@ public class rLawCalc extends Fragment
                     }
                     else if (a == 2)
                     {
-                        concC = concarray[b][a]/temp;
-                        rateC = ratearr[b]/ratearr[j];
-                        if (concarray[b][a-2] == concarray[j][a-2] && concarray[b][a-1] == concarray[b][a-1])
+                        if (concarray[b][a-2] == concarray[j][a-2] && concarray[b][a-1] == concarray[b][a-1] && !C)
                         {
+                            concC = concarray[b][a]/temp;
+                            concC = Math.round(concC * 100);
+                            concC /= 100;
+                            rateC = ratearr[b]/ratearr[j];
+                            rateC = Math.round(rateC*100);
+                            rateC /= 100;
                             getExp("C");
                             C = true;
                             j = b;
@@ -671,168 +916,354 @@ public class rLawCalc extends Fragment
         i = 0;
         j = 0;
         //Get Remaining Elements
-        while(!A && !B && !C)
-        {
-        for (int a = 0; a<3; a++)
-        {
-            for (int b = 0; b < 4; b++)
+            while(!A || !B || !C)
             {
-                temp = concarray[j][i];
-                if (concarray[b][a] != temp && i == a)
+                for (int a = 0; a<3; a++)
                 {
-                    if (a == 0)
+                    for (int b = 0; b < 4; b++)
                     {
-                        concA = concarray[b][a] / temp;
-                        rateA = ratearr[b] / ratearr[j];
-                        if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a + 2] == concarray[j][a + 2] && B)
+                        temp = concarray[j][i];
+                        if (concarray[b][a] != temp && i == a)
                         {
-                            if (expB == 0)
+                            if (a == 0)
                             {
-                                getExp("a");
-                                A = true;
+                                if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a + 2] == concarray[j][a + 2] && B && !A)
+                                {
+                                    concA = concarray[b][a] / temp;
+                                    concA = Math.round(concA * 100);
+                                    concA /= 100;
+                                    rateA = ratearr[b] / ratearr[j];
+                                    rateA = Math.round(rateA*100);
+                                    rateA /= 100;
+                                    if (expB == 0)
+                                    {
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                    else if (expB == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a + 1]/concarray[j][a + 1])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                    else if (expB == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a + 1]/concarray[j][a + 1])*(concarray[b][a + 1]/concarray[j][a + 1]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                }
+                                else if (concarray[b][a + 1] == concarray[j][a + 1] && concarray[b][a + 2] != concarray[j][a + 2] && C && !A)
+                                {
+                                    concA = concarray[b][a] / temp;
+                                    concA = Math.round(concA * 100);
+                                    concA /= 100;
+                                    rateA = ratearr[b] / ratearr[j];
+                                    rateA = Math.round(rateA*100);
+                                    rateA /= 100;
+                                    if (expC == 0)
+                                    {
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                    else if (expC == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a + 2]/concarray[j][a + 2])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                    else if (expC == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a + 2]/concarray[j][a + 2])*(concarray[b][a + 2]/concarray[j][a + 2]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                }
+                                else if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a + 2] != concarray[j][a + 2] && C && B && !A)
+                                {
+                                    concA = concarray[b][a] / temp;
+                                    concA = Math.round(concA * 100);
+                                    concA /= 100;
+                                    rateA = ratearr[b] / ratearr[j];
+                                    rateA = Math.round(rateA*100);
+                                    rateA /= 100;
+                                    if (expB == 0)
+                                    {
+
+                                    }
+                                    else if (expB == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a + 1]/concarray[j][a + 1])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                    }
+                                    else if (expB == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a + 1]/concarray[j][a + 1])*(concarray[b][a + 1]/concarray[j][a + 1]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                    }
+                                    if (expC == 0)
+                                    {
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                    else if (expC == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a + 2]/concarray[j][a + 2])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                    else if (expC == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a + 2]/concarray[j][a + 2])*(concarray[b][a + 2]/concarray[j][a + 2]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("a");
+                                        A = true;
+                                    }
+                                }
                             }
-                            else if (expB == 1)
+                            else if (a == 1)
                             {
-                                double t = concB;
-                                rateA /= t;
-                                getExp("a");
-                                A = true;
+                                if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a - 1] == concarray[j][a - 1] && C && !B)
+                                {
+                                    concB = concarray[b][a] / temp;
+                                    concB = Math.round(concB*100);
+                                    concB /= 100;
+                                    rateB = ratearr[b] / ratearr[j];
+                                    rateB = Math.round(rateB*100);
+                                    rateB /= 100;
+                                    if (expC == 0)
+                                    {
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                    else if (expC == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a + 1]/concarray[j][a + 1])*100);
+                                        t /= 100;
+                                        rateB /= t;
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                    else if (expC == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a + 1]/concarray[j][a + 1])*(concarray[b][a + 1]/concarray[j][a + 1]))*100);
+                                        t /= 100;
+                                        rateB /= t;
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                }
+                                else if (concarray[b][a + 1] == concarray[j][a + 1] && concarray[b][a - 1] != concarray[j][a - 1] && A && !B)
+                                {
+                                    concB = concarray[b][a] / temp;
+                                    concB = Math.round(concB*100);
+                                    concB /= 100;
+                                    rateB = ratearr[b] / ratearr[j];
+                                    rateB = Math.round(rateB*100);
+                                    rateB /= 100;
+                                    if (expA == 0)
+                                    {
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                    else if (expA == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a - 1]/concarray[j][a - 1])*100);
+                                        t /= 100;
+                                        rateB /= t;
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                    else if (expA == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a - 1]/concarray[j][a - 1])*(concarray[b][a - 1]/concarray[j][a - 1]))*100);
+                                        t /= 100;
+                                        rateB /= t;
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                }
+                                else if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a - 1] != concarray[j][a - 1] && C && A && !B)
+                                {
+                                    concB = concarray[b][a] / temp;
+                                    concB = Math.round(concB*100);
+                                    concB /= 100;
+                                    rateB = ratearr[b] / ratearr[j];
+                                    rateB = Math.round(rateB*100);
+                                    rateB /= 100;
+                                    if (expA == 0)
+                                    {
+
+                                    }
+                                    else if (expA == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a - 1]/concarray[j][a - 1])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                    }
+                                    else if (expA == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a - 1]/concarray[j][a - 1])*(concarray[b][a - 1]/concarray[j][a - 1]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                    }
+                                    if (expC == 0)
+                                    {
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                    else if (expC == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a + 2]/concarray[j][a + 2])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                    else if (expC == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a + 2]/concarray[j][a + 2])*(concarray[b][a + 2]/concarray[j][a + 2]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("b");
+                                        B = true;
+                                    }
+                                }
                             }
-                            else if (expB == 2)
+                            else if (a == 2)
                             {
-                                double t = concB * concB;
-                                rateA /= t;
-                                getExp("a");
-                                A = true;
+                                if (concarray[b][a - 2] != concarray[j][a - 2] && concarray[b][a - 1] == concarray[j][a - 1] && A && !C)
+                                {
+                                    concC = concarray[b][a] / temp;
+                                    concC = Math.round(concC * 100);
+                                    concC /= 100;
+                                    rateC = ratearr[b] / ratearr[j];
+                                    rateC = Math.round(rateC*100);
+                                    rateC /= 100;
+                                    if (expA == 0)
+                                    {
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                    else if (expA == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a - 2]/concarray[j][a - 2])*100);
+                                        t /= 100;
+                                        rateB /= t;
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                    else if (expA == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a - 2]/concarray[j][a - 2])*(concarray[b][a - 2]/concarray[j][a - 2]))*100);
+                                        t /= 100;
+                                        rateB /= t;
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                }
+                                else if (concarray[b][a - 2] == concarray[j][a - 2] && concarray[b][a - 1] != concarray[j][a - 1] && B && !C)
+                                {
+                                    concC = concarray[b][a] / temp;
+                                    concC = Math.round(concC * 100);
+                                    concC /= 100;
+                                    rateC = ratearr[b] / ratearr[j];
+                                    rateC = Math.round(rateC*100);
+                                    rateC /= 100;
+                                    if (expB == 0)
+                                    {
+                                        getExp("c");
+                                    }
+                                    else if (expB == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a - 1]/concarray[j][a - 1])*100);
+                                        t /= 100;
+                                        rateC /= t;
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                    else if (expB == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a - 1]/concarray[j][a - 1])*(concarray[b][a - 1]/concarray[j][a - 1]))*100);
+                                        t /= 100;
+                                        rateC /= t;
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                }
+                                else if (concarray[b][a - 2] != concarray[j][a - 2] && concarray[b][a - 1] != concarray[j][a - 1] && B && A && !C)
+                                {
+                                    concC = concarray[b][a] / temp;
+                                    concC = Math.round(concC * 100);
+                                    concC /= 100;
+                                    rateC = ratearr[b] / ratearr[j];
+                                    rateC = Math.round(rateC*100);
+                                    rateC /= 100;
+                                    if (expB == 0)
+                                    {
+
+                                    }
+                                    else if (expB == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a - 1]/concarray[j][a - 1])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                    }
+                                    else if (expB == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a - 1]/concarray[j][a - 1])*(concarray[b][a - 1]/concarray[j][a - 1]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                    }
+                                    if (expA == 0)
+                                    {
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                    else if (expA == 1)
+                                    {
+                                        double t = Math.round((concarray[b][a - 2]/concarray[j][a - 2])*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                    else if (expA == 2)
+                                    {
+                                        double t = Math.round(((concarray[b][a - 2]/concarray[j][a - 2])*(concarray[b][a - 2]/concarray[j][a - 2]))*100);
+                                        t /= 100;
+                                        rateA /= t;
+                                        getExp("c");
+                                        C = true;
+                                    }
+                                }
                             }
                         }
-                        else if (concarray[b][a + 1] == concarray[j][a + 1] && concarray[b][a + 2] != concarray[j][a + 2] && C)
+                        else if (i != a)
                         {
-                            if (expC == 0)
-                            {
-                                getExp("a");
-                                A = true;
-                            }
-                            else if (expC == 1)
-                            {
-                                double t = concC;
-                                rateA /= t;
-                                getExp("a");
-                                A = true;
-                            }
-                            else if (expC == 2)
-                            {
-                                double t = concC * concC;
-                                rateA /= t;
-                                getExp("a");
-                                A = true;
-                            }
-                        }
-                    }
-                    else if (a == 1)
-                    {
-                        concB = concarray[b][a] / temp;
-                        rateB = ratearr[b] / ratearr[j];
-                        if (concarray[b][a + 1] != concarray[j][a + 1] && concarray[b][a - 1] == concarray[j][a - 1] && C)
-                        {
-                            if (expC == 0)
-                            {
-                                getExp("b");
-                                B = true;
-                            }
-                            else if (expC == 1)
-                            {
-                                double t = concC;
-                                rateB /= t;
-                                getExp("b");
-                                B = true;
-                            }
-                            else if (expC == 2)
-                            {
-                                double t = concC * concC;
-                                rateB /= t;
-                                getExp("b");
-                                B = true;
-                            }
-                        }
-                        else if (concarray[b][a + 1] == concarray[j][a + 1] && concarray[b][a - 1] != concarray[j][a - 1] && A)
-                        {
-                            if (expA == 0)
-                            {
-                                getExp("b");
-                                B = true;
-                            }
-                            else if (expA == 1)
-                            {
-                                double t = concA;
-                                rateB /= t;
-                                getExp("b");
-                                B = true;
-                            }
-                            else if (expA == 2)
-                            {
-                                double t = concA * concA;
-                                rateB /= t;
-                                getExp("b");
-                                B = true;
-                            }
-                        }
-                    }
-                    else if (a == 2)
-                    {
-                        concC = concarray[b][a] / temp;
-                        rateC = ratearr[b] / ratearr[j];
-                        if (concarray[b][a - 2] != concarray[j][a - 2] && concarray[b][a - 1] == concarray[j][a - 1] && A)
-                        {
-                            if (expA == 0)
-                            {
-                                getExp("c");
-                            }
-                            else if (expA == 1)
-                            {
-                                double t = concA;
-                                rateB /= t;
-                                getExp("c");
-                            }
-                            else if (expA == 2)
-                            {
-                                double t = concA * concA;
-                                rateB /= t;
-                                getExp("c");
-                            }
-                        }
-                        else if (concarray[b][a - 2] == concarray[j][a - 2] && concarray[b][a - 1] != concarray[j][a - 1] && B)
-                        {
-                            if (expB == 0)
-                            {
-                                getExp("c");
-                            }
-                            else if (expB == 1)
-                            {
-                                double t = concB;
-                                rateB /= t;
-                                getExp("c");
-                            }
-                            else if (expB == 2)
-                            {
-                                double t = concB * concB;
-                                rateB /= t;
-                                getExp("c");
-                            }
+                            j = b;
+                            i = a;
+                            temp = concarray[b][a];
                         }
                     }
                 }
-                else if (i != a)
-                {
-                    j = b;
-                    i = a;
-                    concarray[b][a] = temp;
-                }
-            }
         }
-        }
+
         setResp(3);
-            }
+    }
     public void setResp(int num)
     {
         try
@@ -859,13 +1290,32 @@ public class rLawCalc extends Fragment
                 {
                     resp = resp.substring(0, resp.indexOf("0")-3);
                 }
-                resp = resp.substring(0,resp.indexOf("0")-3) + resp.substring(resp.indexOf("0")+1, resp.length());
+                else
+                {
+                    resp = resp.substring(0, resp.indexOf("0") - 3) + resp.substring(resp.indexOf("0") + 1, resp.length());
+                }
             }
             resp = resp.replaceAll("1", "");
             resp = resp.replaceAll("2", "²");
         }
         catch (StringIndexOutOfBoundsException s)
         {
+            if (num == 1)
+            {
+                resp = "rate = k[A]"+expA;
+                if (expA == 0)
+                {
+                    resp = "rate = k";
+                }
+            }
+            else if (num == 2)
+            {
+                resp = "rate = k[A]" + expA + "[B]" + expB;
+            }
+            else if (num == 3)
+            {
+                resp = "rate = k[A]" +expA+ "[B]" + expB + "[C]" +expC;
+            }
             resp = resp.replaceAll("1", "");
             resp = resp.replaceAll("2", "²");
         }

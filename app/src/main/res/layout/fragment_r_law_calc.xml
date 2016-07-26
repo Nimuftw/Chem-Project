@@ -4,6 +4,9 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:fillViewport="true">
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
 <TableLayout
     android:layout_width="fill_parent"
@@ -240,7 +243,8 @@ android:fillViewport="true">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/C4" />
+            android:id="@+id/C4"
+            android:inputType="numberDecimal"/>
 
     </TableRow>
 
@@ -282,6 +286,7 @@ android:fillViewport="true">
             android:layout_height="wrap_content"
             android:id="@+id/D4" 
             android:inputType="numberDecimal"/>
+
     </TableRow>
 
     <TableRow
@@ -317,4 +322,5 @@ android:fillViewport="true">
 
 
 </TableLayout>
+    </HorizontalScrollView>
 </ScrollView>
