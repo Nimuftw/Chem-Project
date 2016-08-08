@@ -1,13 +1,555 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" >
-    <TextView
-        android:layout_width="wrap_content"
+<ScrollView android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Acids and Bases"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/background_material_light" />
-</RelativeLayout>
+        android:id="@+id/llAcid">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="What is an Acid?"
+            android:id="@+id/tvWhatAcid"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@color/primary_dark_material_dark" />
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/svWhatAcid"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Different Definitions of an Acid and a Base:"
+                    android:id="@+id/textView11"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nBronsted/Lowry Definition - An acid is a proton (H+) donor. A base is a proton acceptor "
+                    android:id="@+id/textView6" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2"
+                    android:src="@drawable/acid1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Lewis Definition - An acid is an electron acceptor. A base is an electron donor\n"
+                    android:id="@+id/textView9" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="pH and pOH:\n"
+                    android:id="@+id/textView10"
+                    android:textSize="27sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="i. pH = - log ([H+])\nii. pOH = - log ([OH-])\niii. pH + pOH = 14 "
+                    android:id="@+id/textView14" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Weak Acid vs. Strong Acid"
+            android:id="@+id/tvWeakVsStrong"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/primary_dark_material_dark"/>
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/svWeakVsStrong"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Different Definitions of an Acid and a Base:"
+                    android:id="@+id/tvAcidBaseDefine"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nWeak Acid - an acid whose equilibrium lies to the left (i.e. the majority of the original acid does not disassociate to H+ and the conjugate base) (e.g. Acetic Acid)"
+                    android:id="@+id/weakAcid"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nStrong Acid - opposite of a weak acid. The majority of the original acid does disassociate. "
+                    android:id="@+id/strongAcid"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Ka and Kb"
+            android:id="@+id/tvKaKb"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@color/primary_dark_material_dark" />
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/svKaKb"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Ka is the equilibrium constant for acids and Kb is the equilibrium constant for bases."
+                    android:id="@+id/tvKa"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The greater the value of Ka, the stronger the acid is."
+                    android:id="@+id/tvKaDescription"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nConjugate Acid/Base:"
+                    android:id="@+id/tvConjugateAcidBase"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - A conjugate base is the resultant base which is formed when an acid loses its proton."
+                    android:id="@+id/tvConjugateDescription1"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - A conjugate acid is the resultant acid formed when a base gains a proton."
+                    android:id="@+id/tvConjugateDescription2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\npH of Weak Acid/Base solutions:"
+                    android:id="@+id/tvkpHAcidBase"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - We can find the pH of weak acid/base solutions if we’re given its Ka / Kb and the concentration of the original acid."
+                    android:id="@+id/tvkpHAcidBaseDescription1"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - We do this by multiplying the Ka with the original concentration of the acid, and then square-root the results (since the concentration of both the conjugate acid/base will be the same)."
+                    android:id="@+id/tvkpHAcidBaseDescription2"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:textSize="27sp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="pKa = - log (Ka)"
+                    android:id="@+id/tvpKa"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:textSize="27sp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="pKb = - log (Kb)"
+                    android:id="@+id/tvpKb"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Indicators"
+            android:id="@+id/tvIndicators"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/primary_dark_material_dark"/>
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/svIndicators"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Indicators: Weak Acids which have different colors in their conjugate acid/base forms"
+                    android:id="@+id/tvIndicatorsDescription1"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - An indicator has its own pKa, which is called the pKin"
+                    android:id="@+id/tvIndicatorsDescription2"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The color starts to change 1 pH unit under the pKin."
+                    android:id="@+id/tvIndicatorsDescription3"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Titrations"
+            android:id="@+id/tvTitrations"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@color/primary_dark_material_dark" />
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/svTitrations"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - A Titration is a process in chemistry that can be used to determine the pH or many other chemical properties of a solution."
+                    android:id="@+id/tvTitrationDescription1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nIn Acid-Base Titrations, there are some important things that we must note:"
+                    android:id="@+id/tvTitrationDescription2"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The two species consist of one acid and one base, which are mixed together slowly"
+                    android:id="@+id/tvTitrationDescription3"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The equivalence point is when there is an equal amount of moles acid and moles base. "
+                    android:id="@+id/tvTitrationDescription4"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The pH of the system changes significantly when the equivalence point is reached."
+                    android:id="@+id/tvTitrationDescription6"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nStrong Acid – Strong Base Titration:"
+                    android:id="@+id/tvTitrationDescription7"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - E.g. titrating a strong acid such as HCl with a strong base such as NaOH."
+                    android:id="@+id/tvTitrationDescription8"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The equivalence point always occurs at pH 7."
+                    android:id="@+id/tvTitrationDescription9"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - Can calculate the pH at any given time by finding the number of moles of H+ and OH- available at any given time."
+                    android:id="@+id/tvTitrationDescription10"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="27sp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nWeak Acid or Weak Base Titration:"
+                    android:id="@+id/tvTitrationDescription11"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - Always consists of one Strong Acid/Base mixed with one weak acid/base. "
+                    android:id="@+id/tvTitrationDescription12"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The pH/pOH of the half-equivalence point is the same as the pKa/pKb of the acid/base"
+                    android:id="@+id/tvTitrationDescription13"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Buffers"
+            android:id="@+id/tvBuffers"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@color/primary_dark_material_dark" />
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/svBuffers"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - Buffers are systems which resist drastic changes in pH by having both an acid and its conjugate base in one system."
+                    android:id="@+id/tvBuffersDescription1"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - One example of a buffer is the bicarbonate (HCO3-) buffer found in our blood, which keeps our body pH vitally around 7.35"
+                    android:id="@+id/tvBuffersDescription2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="\nHenderson-Hasselbalch Equation:"
+                    android:id="@+id/tvBuffersDescription3"
+                    android:textSize="27sp"
+                    android:layout_weight="0.43" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivBuffersDescription1"
+                    android:src="@drawable/buffers1"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - This equation is one we can use to calculate the pH of a buffer."
+                    android:id="@+id/tvBuffersDescription4"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Polyprotic Acids"
+            android:id="@+id/tvPolyproticAcids"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/primary_dark_material_dark"/>
+
+        <ScrollView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/svPolyproticAcids"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - The one problem with polyprotic acids is that the conjugate base formed by the disassociation of the first acid has amphoteric (both acidic and basic) properties."
+                    android:id="@+id/tvPolyproticAcidsDescription1"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=" - Thus, to find the pH of a polyprotic acid buffer, we must use this equation:\npH = 1/2 * (pKa1 + pKa2) "
+                    android:id="@+id/tvPolyproticAcidsDescription2"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</ScrollView>

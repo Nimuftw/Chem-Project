@@ -47,6 +47,10 @@
             android:icon="@drawable/_electrochem"
             android:title="Electrochemistry" />
         <item
+            android:id="@+id/nav_AtomProps"
+            android:icon="@drawable/atomicproperties"
+            android:title="@string/atomprops" />
+        <item
             android:id="@+id/nav_Spectroscopy"
             android:icon="@drawable/_spectroscopy"
             android:title="Intro to Spectroscopy" />
@@ -72,7 +76,11 @@
             <item
                 android:id="@+id/nav_red_potentials"
                 android:icon="@drawable/ic_menu_send"
-                android:title="@string/OxRules" />
+                android:title="@string/RedPotentials" />
+            <item
+                android:id="@+id/nav_colors"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/colorstitle" />
 
         </menu>
     </item>

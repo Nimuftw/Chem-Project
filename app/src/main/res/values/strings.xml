@@ -15,7 +15,7 @@
     <string name="Calculators">Calculators</string>
     <string name="BEqua">Balancing Equations</string>
     <string name="FindingPH">pH Calculator</string>
-    <string name="OxRules">Rules for Determining Oxidation States</string>
+    <string name="OxRules">Oxidation State Rules</string>
     <string name="RedPotentials">Some Common Reduction Potentials</string>
     <string name="Title">Content Review</string>
     <string name="Gibbs">Free Energy Calculator</string>
@@ -43,6 +43,11 @@
     <string name="concBase">[Base]</string>
     <string name="oneKb">Kb (for weak base only)</string>
     <string name="rate">Rate</string>
+    <string name="beq1">Balancing Equations</string>
+    <string name="atomprops">Atomic Structure and Properties</string>
+    <string name="colorstitle">List of Ion Colors</string>
+    <string name="AtomicPropertiesTitle">Atomic Properties</string>
+    <string name="ColorsLayoutTitle">Ion Colors</string>
     <!-- Fills up ArrayAdapter for rLawCalc Spinner -->
     <string-array name="numOfReactants">
         <item>How Many Reactants are in this Reaction?</item>

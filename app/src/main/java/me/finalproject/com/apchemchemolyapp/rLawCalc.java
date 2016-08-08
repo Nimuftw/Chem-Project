@@ -72,7 +72,6 @@ public class rLawCalc extends Fragment
     int expA;
     int expB;
     int expC;
-    boolean onClick = false;
     String resp;
     String spinner = "";
     ArrayAdapter<CharSequence> choices;

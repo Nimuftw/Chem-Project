@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,10 +26,10 @@ import android.view.ViewGroup;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-
         //load pictures for navigation bar
 //        Bitmap quantum;
 //        Bitmap stoich;
@@ -49,14 +48,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -209,12 +200,6 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new rLawCalc())
                     .commit();
         }
-        else if(id == R.id.nav_BEQ)
-        {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new stoich_fragment())
-                    .commit();
-        }
         else if(id == R.id.nav_sol_rule)
         {
             fragmentManager.beginTransaction()
@@ -245,9 +230,26 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new pHCalc_fragment())
                     .commit();
         }
+        else if (id == R.id.nav_BEQ)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new balanceEq())
+                    .commit();
+        }
+        else if (id == R.id.nav_colors)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new balanceEq())
+                    .commit();
+        }
+        else if (id == R.id.nav_AtomProps)
+        {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new atomicproperties_frag())
+                    .commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }
